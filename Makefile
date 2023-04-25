@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/04/25 11:54:28 by makurz           ###   ########.fr        #
+#    Updated: 2023/04/25 13:23:09 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ LIBMLX	:= ./lib/MLX42
 HEADERS	:= -I ./include -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 # SRCS	:= $(shell find ./src -iname "*.c")
-SRCS	:= ./src/sprite_example.c
+SRCS	:= ./learning_mlx/randomize.c
 OBJS	:= ${SRCS:.c=.o}
 
 all: libmlx $(NAME)
@@ -33,10 +33,10 @@ $(NAME): $(OBJS)
 
 clean:
 	@rm -f $(OBJS)
-	@rm -rf $(LIBMLX)/build
 
 fclean: clean
 	@rm -f $(NAME)
+	@rm -rf $(LIBMLX)/build
 
 re: clean all
 

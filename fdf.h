@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makurz <makurz@student.42heilbronn.de>     +#+  +:+       +#+        */
+/*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/23 09:51:40 by makurz            #+#    #+#             */
-/*   Updated: 2023/04/16 00:58:57 by makurz           ###   ########.fr       */
+/*   Created: 2023/04/25 13:33:24 by makurz            #+#    #+#             */
+/*   Updated: 2023/04/25 13:34:18 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../header/libft.h"
+#ifndef FDF_H
+# define FDF_H
 
-// Returns the size of the list 'lst'.
-int	ft_lstsize(t_list *lst)
-{
-	int		size;
-	t_list	*i;
+# include "./lib/MLX42/include/MLX42/MLX42.h"
+# include "./lib/Libft/header/libft.h"
 
-	if (lst == NULL)
-		return (0);
-	i = lst;
-	size = 1;
-	while (i->next)
-	{
-		++size;
-		i = i->next;
-	}
-	return (size);
-}
+#endif // !FDF_H
