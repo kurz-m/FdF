@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: makurz <makurz@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 10:03:26 by makurz            #+#    #+#             */
-/*   Updated: 2023/04/25 10:07:56 by makurz           ###   ########.fr       */
+/*   Updated: 2023/04/26 10:42:10 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdio.h>
-#include "../lib/MLX42/include/MLX42/MLX42.h"
+#include <MLX42.h>
 #define WIDTH 720
 #define HEIGHT 480
 

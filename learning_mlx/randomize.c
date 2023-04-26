@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 12:13:13 by makurz            #+#    #+#             */
-/*   Updated: 2023/04/25 12:13:47 by makurz           ###   ########.fr       */
+/*   Updated: 2023/04/25 15:45:02 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void ft_randomize(void* param)
 		for (int32_t y = 0; y < image->height; ++y)
 		{
 			uint32_t color = ft_pixel(
-				rand() % 0xFF, // R
-				rand() % 0xFF, // G
-				rand() % 0xFF, // B
-				rand() % 0xFF  // A
+				0x00, // R
+				0x00, // G
+				0xFF, // B
+				0xF0  // A
 			);
 			mlx_put_pixel(image, i, y, color);
 		}
@@ -51,13 +51,13 @@ void ft_hook(void* param)
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
-		image->instances[0].y -= 5;
+		image->instances[0].y -= 10;
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
-		image->instances[0].y += 5;
+		image->instances[0].y += 10;
 	if (mlx_is_key_down(mlx, MLX_KEY_LEFT))
-		image->instances[0].x -= 5;
+		image->instances[0].x -= 10;
 	if (mlx_is_key_down(mlx, MLX_KEY_RIGHT))
-		image->instances[0].x += 5;
+		image->instances[0].x += 10;
 }
 
 // -----------------------------------------------------------------------------
