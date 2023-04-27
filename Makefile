@@ -6,18 +6,18 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/04/26 08:49:22 by makurz           ###   ########.fr        #
+#    Updated: 2023/04/27 10:48:04 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= Game
-CFLAGS	:= -Wextra -Wall -Wunreachable-code -Ofast
+CFLAGS	:= -Wextra -Wall -Wunreachable-code -Ofast -g
 LIBMLX	:= ./lib/MLX42
 
 HEADERS	:= -I ./include -I $(LIBMLX)/include
 LIBS	:= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 # SRCS	:= $(shell find ./src -iname "*.c")
-SRCS	:= ./learning_mlx/hook.c
+SRCS	:= ./learning_mlx/starting.c
 OBJS	:= ${SRCS:.c=.o}
 
 all: libmlx $(NAME)

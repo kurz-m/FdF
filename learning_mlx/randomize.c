@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 12:13:13 by makurz            #+#    #+#             */
-/*   Updated: 2023/04/25 15:45:02 by makurz           ###   ########.fr       */
+/*   Updated: 2023/04/27 09:39:03 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ void ft_randomize(void* param)
 			uint32_t color = ft_pixel(
 				0x00, // R
 				0x00, // G
-				0xFF, // B
-				0xF0  // A
+				0x00, // B
+				0xFF  // A
 			);
 			mlx_put_pixel(image, i, y, color);
 		}
@@ -47,9 +47,18 @@ void ft_randomize(void* param)
 void ft_hook(void* param)
 {
 	mlx_t* mlx = param;
+	int		i = 0;
 
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
+	if (mlx_is_key_down(mlx, MLX_KEY_G))
+	{
+		while (i < 20)
+		{
+			mlx_put_pixel(image, 40 + i, 40 + i, ft_pixel(255, 255, 255, 255));
+			++i;
+		}
+	}
 	if (mlx_is_key_down(mlx, MLX_KEY_UP))
 		image->instances[0].y -= 10;
 	if (mlx_is_key_down(mlx, MLX_KEY_DOWN))
@@ -78,7 +87,7 @@ int32_t main(int32_t argc, const char* argv[])
 		puts(mlx_strerror(mlx_errno));
 		return(EXIT_FAILURE);
 	}
-	if (mlx_image_to_window(mlx, image, 0, 0) == -1)
+	if (mlx_image_to_window(mlx, image, WIDTH/2 - 64, HEIGHT/2 - 64) == -1)
 	{
 		mlx_close_window(mlx);
 		puts(mlx_strerror(mlx_errno));
