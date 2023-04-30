@@ -54,3 +54,4 @@ MLX42/
 Game
 *.log
 Libft/
+.ccls-cache

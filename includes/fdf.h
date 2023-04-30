@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 13:33:24 by makurz            #+#    #+#             */
-/*   Updated: 2023/04/27 10:47:39 by makurz           ###   ########.fr       */
+/*   Updated: 2023/04/30 14:31:14 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,10 @@
 # define FDF_H
 
 // NOTE: change to regular paths and include path into Makefile
-# include "./lib/MLX42/include/MLX42/MLX42.h"
-# include "./lib/Libft/header/libft.h"
-// WARNING: used for math operations
-#include <_types/_uint32_t.h>
+# include "MLX42.h"
+# include "libft.h"
+# include <stdint.h>
 # include <math.h>
-// WARNING: used for error handling
 # include <stdio.h>
 # include <unistd.h>
 

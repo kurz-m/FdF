@@ -1,0 +1,6 @@
+-Wall
+-Werror
+-Wextra
+-I./includes
+-I./lib/Libft/header
+-I./lib/MLX42/include/MLX42
