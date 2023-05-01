@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/01 13:11:26 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/01 13:22:51 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@ typedef struct s_point
 	float	axis[3];
 	int		color;
 }	t_point;
+
+// define enum for projection type
+enum e_project
+{
+	ISOMETRIC,
+	PARALLEL,
+};
 
 // define a struct for all points of a map
 typedef struct s_map
