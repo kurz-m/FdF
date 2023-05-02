@@ -6,12 +6,12 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/02 17:10:45 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/02 21:14:17 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Define the name of the executable
-NAME	:= fdf
+NAME	:= FdF
 
 # Define the name of the submodule
 LIBFT_NAME := lib/Libft/lib/libft.a
@@ -31,32 +31,32 @@ else
 endif
 
 # Add path for the source files
-VPATH	:= src/
+VPATH := src/
 
 # Add the remove command
 RM := rm -f
 
 # Define the including libraries
-LIBMLX	:= ./lib/MLX42
-LIBFT	:= ./lib/Libft
+LIBMLX := ./lib/MLX42
+LIBFT := ./lib/Libft
 
 # Specify the header files
-HEADERS	:= -I./includes -I$(LIBMLX)/include/MLX42 -I$(LIBFT)/header
+HEADERS := -I./includes -I$(LIBMLX)/include/MLX42 -I$(LIBFT)/header
 
 # Specify the libraries to include
-LIBS	:=	\
+LIBS :=	\
 			$(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm \
 			$(LIBFT)/lib/libft.a
 
 # Name all source files
-SRCS	:= \
+SRCS := \
 			exits.c fdf.c init.c parse_map.c
 
 # Define a directory for object files
 OBJ_DIR := ./_obj
 
 # Substitute the suffix .c with .o for the object files
-OBJS	:= $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
+OBJS := $(addprefix $(OBJ_DIR)/, $(SRCS:%.c=%.o))
 
 # Define colors for the printing
 Y := "\033[33m"

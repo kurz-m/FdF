@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/02 17:25:11 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/02 20:07:38 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,10 @@ static void	get_points(t_map *map, char *file_name)
 
 void	parse_map(char *file_name, t_fdf *fdf)
 {
-	int		alf;
-
 	fdf->map.width = get_width(file_name);
 	fdf->map.height = get_height(file_name);
 	if (fdf->map.width == 0 || fdf->map.height == 0)
 		error_handling(SIZE_ERROR);
 	init_map(&fdf->map);
 	get_points(&fdf->map, file_name);
-	alf = 2;
 }
