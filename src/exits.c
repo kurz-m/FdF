@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:06:43 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/02 17:42:16 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/02 21:38:39 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	free_coords(t_point **coords, int count)
 	}
 	free(coords);
 }
+
 // FIX: think about mlx terminate
 void	error_handling(int exit_code)
 {

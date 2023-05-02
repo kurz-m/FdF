@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/02 20:07:38 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/02 21:39:39 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,8 @@ static int	get_width(char *file_name)
 	int		fd;
 
 	fd = open(file_name, O_RDONLY);
-	if (fd  == -1)
+	if (fd == -1)
 		error_handling(MAP_ERROR);
-
 	new_line = get_next_line(fd);
 	split_line = ft_split(new_line, ' ');
 	width = ft_arrlen((const char **)split_line);
@@ -40,12 +39,14 @@ static int	get_height(char *file_name)
 	int		fd;
 
 	fd = open(file_name, O_RDONLY);
-	if (fd  == -1)
+	if (fd == -1)
 		error_handling(MAP_ERROR);
-
 	height = 0;
-	while (((new_line = get_next_line(fd)) != NULL))
+	while (1)
 	{
+		new_line = get_next_line(fd);
+		if (new_line == NULL)
+			break ;
 		free(new_line);
 		++height;
 	}
@@ -54,10 +55,8 @@ static int	get_height(char *file_name)
 	return (height);
 }
 
-#include <stdio.h>
-static void	put_point(t_map *map, int x, int y, int z)
+static void	set_point(t_map *map, int x, int y, int z)
 {
-	printf("y: %i, x: %i, z: %i\n", y, x, z);
 	map->coords[x][y].axis[X] = (float) x;
 	map->coords[x][y].axis[Y] = (float) y;
 	map->coords[x][y].axis[Z] = (float) z;
@@ -73,19 +72,19 @@ static void	get_points(t_map *map, char *file_name)
 	int		fd;
 
 	fd = open(file_name, O_RDONLY);
-	if (fd  == -1)
+	if (fd == -1)
 		error_handling(MAP_ERROR);
 	y = 1;
-	while (((rows = get_next_line(fd)) != NULL) && (map->height - y >= 0))
+	while (map->height - y >= 0)
 	{
+		rows = get_next_line(fd);
+		if (rows == NULL)
+			break ;
 		x = -1;
 		columns = ft_split(rows, ' ');
 		free(rows);
-		// while (columns[++x] != NULL &&)
 		while (++x < map->width)
-		{
-			put_point(map, x, map->height - y, ft_atoi(columns[x]));
-		}
+			set_point(map, x, map->height - y, ft_atoi(columns[x]));
 		ft_arrfree(columns);
 		++y;
 	}
