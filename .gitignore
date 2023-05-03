@@ -50,6 +50,8 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Personal ignores
 MLX42/
 Game
 *.log

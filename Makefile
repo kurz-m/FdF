@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/02 21:14:17 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/03 07:12:21 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ ifeq ($(UNAME), Linux)
 else ifeq ($(UNAME), Darwin)
 	CC := cc
 	DB := lldb
-	CFLAGS ?= -Wextra -Wall -Wunreachable-code -Ofast -g3
+	CFLAGS ?= -Wextra -Wall -Wunreachable-code -Ofast -g
 else
 	$(error Unsupported operating system: $(UNAME))
 endif
@@ -68,23 +68,28 @@ CUT := "\033[K"
 
 all: $(NAME)
 
+# create a rule to compile the FdF main program
 $(NAME): $(OBJS) $(LIBFT_NAME) libmlx
 	@echo $(Y)Compiling [$(NAME)]...$(X)
 	@printf $(UP)$(CUT)
 	@$(CC) $(OBJS) $(LIBS) -o $(NAME)
 	@echo $(G)Finished"  "[$(NAME)]...$(X)
 
+# Define a rule to compile my own Libft
 $(LIBFT_NAME):
 	@make -C ./lib/Libft/
 
+# Define a rule to compile the MLX42
 libmlx:
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
+# Define a static rule for compiling the object files
 $(OBJ_DIR)/%.o: %.c
 	@echo $(Y)Compiling [$@]...$(X)
 	@mkdir -p _obj
 	@$(CC) $(CFLAGS) -MMD -MP -c $< $(HEADERS) -o $@
 
+# Define a rule for cleaning the object files
 clean:
 	@echo $(R)Cleaning objects...
 	@make -C ./lib/Libft/ clean
@@ -95,6 +100,7 @@ clean:
 		echo $(G)Cleaned!$(X); \
 	fi
 
+# Define a rule for cleaning objects and executables
 fclean: clean
 	@echo $(R)Cleaning executables...
 	@make -C ./lib/Libft/ fclean
