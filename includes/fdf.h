@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/03 15:14:43 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/03 17:27:40 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 
-// Defines for axis of the points
-# define X 0
-# define Y 1
-# define Z 2
+// define rotation angles for different projections0
+# define ISO_ALPHA 45.0
+# define ISO_BETA -35.264
 
 /*****************************************************************************/
 /*****************************************************************************/
