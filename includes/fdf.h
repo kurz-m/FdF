@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/02 21:39:09 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/03 14:46:48 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,27 @@
 /*****************************************************************************/
 /*****************************************************************************/
 
-# define C_TEAL 0x87CBB9
-# define C_BURNT 0xFF6000
-# define C_WHITE 0xFFFFFF
-# define C_RED 0xD63447
-# define C_GREEN 0x446A46
+# define C_TEAL 0x87CBB9FF
+# define C_BURNT 0xFF6000FF
+# define C_WHITE 0xFFFFFFFF
+# define C_RED 0xD63447FF
+# define C_GREEN 0x446A46FF
 
-// define a struct for the coordinates of a single point
-typedef struct s_point
+// define a struct for the coordinates of a single point 3D
+typedef struct s_point3D
 {
-	float	axis[3];
+	float	x;
+	float	y;
+	float	z;
 	int		color;
-}	t_point;
+}	t_point3D;
+
+// define a struct for the coordinates of a single point 2D
+typedef struct s_point2D
+{
+	float	x;
+	float	y;
+}	t_point2D;
 
 // define enum for projection type
 enum e_project
@@ -76,7 +85,7 @@ enum e_errors
 // define a struct for all points of a map
 typedef struct s_map
 {
-	t_point		**coords;
+	t_point3D	**coords;
 	int			width;
 	int			height;
 	int			max_z;
@@ -100,6 +109,7 @@ typedef struct s_fdf
 	mlx_t			*mlx;
 	mlx_image_t		*image;
 	t_map			map;
+	t_list			*map_lines;
 	t_projection	projection;
 	int				x_offset;
 	int				y_offset;
@@ -125,5 +135,8 @@ void	parse_map(char *file_name, t_fdf *fdf);
 // Function for different error handling codes
 void	error_handling(int exit_code);
 void	free_coords(t_point **coords, int count);
+
+// WARNING: ONLY TESTFUNCTIONS!!!! REMOVE LATER
+void	print_test(t_fdf * fdf);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 15:34:23 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/02 21:40:53 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/03 14:13:54 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_map(t_map *map)
 	width = -1;
 	map->max_z = 0;
 	map->min_z = 0;
-	map->coords = (t_point **) malloc(sizeof(t_point *) * map->width);
+	map->coords = (t_point3D **) malloc(sizeof(t_point3D *) * map->width);
 	if (map->coords == NULL)
 	{
 		free(map->coords);
@@ -28,13 +28,23 @@ void	init_map(t_map *map)
 	}
 	while (++width < map->width)
 	{
-		map->coords[width] = malloc(sizeof(t_point) * map->height);
+		map->coords[width] = malloc(sizeof(t_point3D) * map->height);
 		if ((map->coords[width]) == NULL)
 		{
 			free_coords(map->coords, width);
 			error_handling(COORDS_ERROR);
 		}
 	}
+}
+
+void	init_projection(t_projection *project)
+{
+	project->type = ISOMETRIC;
+	project->zoom = 10;
+	project->alpha = 45;
+	project->beta = -35.264;
+	project->gamma = 0;
+
 }
 
 // Initializes the main struct for fdf

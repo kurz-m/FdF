@@ -6,96 +6,88 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/02 21:39:39 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/03 14:02:04 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	get_width(char *file_name)
+static t_list	*read_file(char *file_name, t_fdf *fdf)
 {
-	int		width;
-	char	*new_line;
-	char	**split_line;
+	char	*line;
+	t_list	*head;
 	int		fd;
 
+	head = malloc(sizeof(t_list));
+	if (head == NULL)
+		error_handling(INIT_ERROR);
+	head = NULL;
+	fdf->map.height = 0;
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		error_handling(MAP_ERROR);
-	new_line = get_next_line(fd);
-	split_line = ft_split(new_line, ' ');
-	width = ft_arrlen((const char **)split_line);
-	ft_arrfree(split_line);
-	free(new_line);
-	new_line = NULL;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		ft_lstadd_back(&head, ft_lstnew(line));
+		++fdf->map.height;
+		line = get_next_line(fd);
+	}
 	close(fd);
-	return (width);
+	free(line);
+	line = NULL;
+	return (head);
 }
 
-static int	get_height(char *file_name)
+static int	get_width(t_fdf *fdf)
 {
-	int		height;
-	char	*new_line;
-	int		fd;
+	int		width;
+	char	**split_line;
 
-	fd = open(file_name, O_RDONLY);
-	if (fd == -1)
-		error_handling(MAP_ERROR);
-	height = 0;
-	while (1)
-	{
-		new_line = get_next_line(fd);
-		if (new_line == NULL)
-			break ;
-		free(new_line);
-		++height;
-	}
-	new_line = NULL;
-	close(fd);
-	return (height);
+	width = 0;
+	split_line = ft_split((char *) fdf->map_lines->content, ' ');
+	width = ft_arrlen((const char **)split_line);
+	ft_arrfree(split_line);
+	return (width);
 }
 
 static void	set_point(t_map *map, int x, int y, int z)
 {
-	map->coords[x][y].axis[X] = (float) x;
-	map->coords[x][y].axis[Y] = (float) y;
-	map->coords[x][y].axis[Z] = (float) z;
+	map->coords[x][y].x = (float) x;
+	map->coords[x][y].y = (float) y;
+	map->coords[x][y].z = (float) z;
 	map->coords[x][y].color = 0;
 }
 
-static void	get_points(t_map *map, char *file_name)
+static void	get_points(t_fdf *fdf)
 {
-	char	*rows;
+	t_list	*rows;
 	char	**columns;
 	int		x;
 	int		y;
-	int		fd;
 
-	fd = open(file_name, O_RDONLY);
-	if (fd == -1)
-		error_handling(MAP_ERROR);
 	y = 1;
-	while (map->height - y >= 0)
+	rows = fdf->map_lines;
+	while (fdf->map.height - y >= 0)
 	{
-		rows = get_next_line(fd);
 		if (rows == NULL)
 			break ;
 		x = -1;
-		columns = ft_split(rows, ' ');
-		free(rows);
-		while (++x < map->width)
-			set_point(map, x, map->height - y, ft_atoi(columns[x]));
-		ft_arrfree(columns);
+		columns = ft_split((char *) rows->content, ' ');
+		while (++x < fdf->map.width)
+			set_point(&fdf->map, x, fdf->map.height - y, ft_atoi(columns[x]));
 		++y;
+		rows = rows->next;
 	}
+	ft_arrfree(columns);
 }
 
 void	parse_map(char *file_name, t_fdf *fdf)
 {
-	fdf->map.width = get_width(file_name);
-	fdf->map.height = get_height(file_name);
+	fdf->map_lines = read_file(file_name, fdf);
+	fdf->map.width = get_width(fdf);
 	if (fdf->map.width == 0 || fdf->map.height == 0)
 		error_handling(SIZE_ERROR);
 	init_map(&fdf->map);
-	get_points(&fdf->map, file_name);
+	get_points(fdf);
 }

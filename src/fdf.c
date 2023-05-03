@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:00:55 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/02 15:07:38 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/03 07:47:15 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int32_t	main(int argc, char **argv)
 		error_handling(USAGE);
 	file_name = argv[1];
 	fdf = init_fdf(file_name);
-	mlx_loop(fdf->mlx);
-	mlx_terminate(fdf->mlx);
+//	mlx_loop(fdf->mlx);
+//	mlx_terminate(fdf->mlx);
 	return (EXIT_SUCCESS);
 }
