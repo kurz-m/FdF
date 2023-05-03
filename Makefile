@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/03 07:49:34 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/03 15:17:30 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ LIBS :=	\
 
 # Name all source files
 SRCS := \
-			exits.c fdf.c init.c parse_map.c draw.c
+			exits.c fdf.c init.c parse_map.c draw.c to_delete.c
 
 # Define a directory for object files
 OBJ_DIR := ./_obj

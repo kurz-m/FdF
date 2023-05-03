@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/03 14:46:48 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/03 15:14:43 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@
 // define a struct for the coordinates of a single point 3D
 typedef struct s_point3D
 {
-	float	x;
-	float	y;
-	float	z;
+	double	x;
+	double	y;
+	double	z;
 	int		color;
 }	t_point3D;
 
 // define a struct for the coordinates of a single point 2D
 typedef struct s_point2D
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }	t_point2D;
 
 // define enum for projection type
@@ -134,7 +134,12 @@ void	parse_map(char *file_name, t_fdf *fdf);
 // error handling
 // Function for different error handling codes
 void	error_handling(int exit_code);
-void	free_coords(t_point **coords, int count);
+void	free_coords(t_point3D **coords, int count);
+
+// rotation functions in rotate.c
+t_point3D	rotate_x(t_point3D point, double angle);
+t_point3D	rotate_y(t_point3D point, double angle);
+t_point3D	rotate_z(t_point3D point, double angle);
 
 // WARNING: ONLY TESTFUNCTIONS!!!! REMOVE LATER
 void	print_test(t_fdf * fdf);

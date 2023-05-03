@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:06:43 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/02 21:38:39 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/03 15:14:56 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // function used for freeing the coordinates
 // used during initialization and closing the program
-void	free_coords(t_point **coords, int count)
+void	free_coords(t_point3D **coords, int count)
 {
 	while (count >= 0)
 	{
