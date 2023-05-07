@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/03 15:17:30 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/07 19:45:18 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,7 @@ $(OBJ_DIR)/%.o: %.c
 
 # Define a rule for cleaning the object files
 clean:
-	@echo $(R)Cleaning objects...
+	@echo $(R)Cleaning"  "[$(OBJ_DIR)]...$(X);
 	@make -C ./lib/Libft/ clean
 	@printf $(UP)$(CUT)
 	@if [ -d "${OBJ_DIR}" ]; then \
