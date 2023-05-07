@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/03 17:27:40 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/07 16:52:35 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 
-// define rotation angles for different projections0
+// define angles for different projections
+# define ISO_PROJECTION 30.0
+
+// define rotation angles for different views
 # define ISO_ALPHA 45.0
 # define ISO_BETA -35.264
 
@@ -139,6 +142,9 @@ void	free_coords(t_point3D **coords, int count);
 t_point3D	rotate_x(t_point3D point, double angle);
 t_point3D	rotate_y(t_point3D point, double angle);
 t_point3D	rotate_z(t_point3D point, double angle);
+
+// projection functions in project.c
+t_point2D	isometric(t_point3D point);
 
 // WARNING: ONLY TESTFUNCTIONS!!!! REMOVE LATER
 void	print_test(t_fdf * fdf);

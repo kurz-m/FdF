@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 15:34:23 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/03 14:13:54 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/07 16:52:51 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,23 @@ void	init_map(t_map *map)
 	}
 }
 
-void	init_projection(t_projection *project)
+static void	init_projection(t_projection *project)
 {
 	project->type = ISOMETRIC;
 	project->zoom = 10;
 	project->alpha = 45;
 	project->beta = -35.264;
 	project->gamma = 0;
-
+	project->move_x = 0;
+	project->move_y = 0;
 }
 
-// Initializes the main struct for fdf
+// Initializes the main struct for FdF
 t_fdf	*init_fdf(char *file_name)
 {
 	t_fdf	*fdf;
 
+	init_projection(&fdf->projection);
 	fdf = malloc(sizeof(t_fdf));
 	if (fdf == NULL)
 		error_handling(INIT_ERROR);

@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/06 20:54:44 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/07 16:30:09 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ void	parse_map(char *file_name, t_fdf *fdf)
 		error_handling(SIZE_ERROR);
 	init_map(&fdf->map);
 	get_points(fdf);
+	ft_lstclear(&fdf->map_lines, &free);
 	print_test(fdf);
 }
