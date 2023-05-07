@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/03 15:18:08 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/06 20:54:44 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ static int	get_width(t_fdf *fdf)
 
 static void	set_point(t_map *map, int x, int y, int z)
 {
-	map->coords[x][y].x = (float) x;
-	map->coords[x][y].y = (float) y;
-	map->coords[x][y].z = (float) z;
+	map->coords[x][y].x = (double) x;
+	map->coords[x][y].y = (double) y;
+	map->coords[x][y].z = (double) z;
 	map->coords[x][y].color = 0;
 }
 
