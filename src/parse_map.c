@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/07 16:30:09 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/08 17:20:40 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ static void	set_point(t_map *map, int x, int y, int z)
 {
 	map->coords[x][y].x = (double) x;
 	map->coords[x][y].y = (double) y;
-	map->coords[x][y].z = (double) z;
-	map->coords[x][y].color = 0;
+	map->coords[x][y].z = -(double) z;
+	map->coords[x][y].color = 0xFFFFFFFF;
 }
 
 static void	get_points(t_fdf *fdf)
@@ -91,5 +91,5 @@ void	parse_map(char *file_name, t_fdf *fdf)
 	init_map(&fdf->map);
 	get_points(fdf);
 	ft_lstclear(&fdf->map_lines, &free);
-	print_test(fdf);
+	// print_test(fdf);
 }

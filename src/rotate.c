@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:53:37 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/03 15:13:56 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/08 14:23:46 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ t_point3D	rotate_x(t_point3D point, double angle)
 	double		z;
 
 	rad = angle * M_PI / 180.0;
-	y = point.y * cos(rad) - point.z * sin(rad);
-	z = point.y * sin(rad) + point.z * cos(rad);
+	y = point.y * cos(rad) + point.z * sin(rad);
+	z = -point.y * sin(rad) + point.z * cos(rad);
 	point.y = y;
 	point.z = z;
 	return (point);

@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/07 19:45:18 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/08 12:00:09 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,12 +45,14 @@ HEADERS := -I./includes -I$(LIBMLX)/include/MLX42 -I$(LIBFT)/header
 
 # Specify the libraries to include
 LIBS :=	\
-			$(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm \
+			$(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm	\
 			$(LIBFT)/lib/libft.a
 
 # Name all source files
 SRCS := \
-			exits.c fdf.c init.c parse_map.c draw.c to_delete.c
+			exits.c fdf.c init.c parse_map.c draw.c to_delete.c	\
+			project.c rotate.c
+
 
 # Define a directory for object files
 OBJ_DIR := ./_obj

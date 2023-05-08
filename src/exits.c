@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:06:43 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/06 20:46:38 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/08 07:05:16 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ void	error_handling(int exit_code)
 		ft_putendl_fd("FDF ended and closed", 1);
 	else if (exit_code == USAGE)
 		ft_putendl_fd("Use as following: ./FdF [mapname.fdf]", 2);
+	else if (exit_code == MLX_INIT_ERROR)
+		ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
+	else if (exit_code == IMG_INIT_ERROR)
+		ft_putendl_fd((char *)mlx_strerror(mlx_errno), 2);
 	else if (exit_code == INIT_ERROR)
 		ft_putendl_fd("Could not initialize main struct", 2);
 	else if (exit_code == MAP_ERROR)

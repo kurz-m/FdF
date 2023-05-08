@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/07 16:52:35 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/08 17:20:21 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <math.h>
+# include <stdio.h>
 
 // Include the MLX42 library
 # include "MLX42.h"
@@ -34,7 +35,7 @@
 
 // define rotation angles for different views
 # define ISO_ALPHA 45.0
-# define ISO_BETA -35.264
+# define ISO_BETA 35.264
 
 /*****************************************************************************/
 /*****************************************************************************/
@@ -49,23 +50,7 @@
 # define C_WHITE 0xFFFFFFFF
 # define C_RED 0xD63447FF
 # define C_GREEN 0x446A46FF
-
-// define a struct for the coordinates of a single point 3D
-typedef struct s_point3D
-{
-	double	x;
-	double	y;
-	double	z;
-	int		color;
-}	t_point3D;
-
-// define a struct for the coordinates of a single point 2D
-typedef struct s_point2D
-{
-	double	x;
-	double	y;
-}	t_point2D;
-
+//
 // define enum for projection type
 enum e_project
 {
@@ -78,11 +63,40 @@ enum e_errors
 {
 	SUCCESS,
 	USAGE,
+	MLX_INIT_ERROR,
+	IMG_INIT_ERROR,
 	INIT_ERROR,
 	MAP_ERROR,
 	COORDS_ERROR,
 	SIZE_ERROR,
 };
+
+typedef struct s_bresenham
+{
+	int		dx;
+	int		dy;
+	int		sx;
+	int		sy;
+	int		error;
+	int		e2;
+}	t_bresenham;
+
+// define a struct for the coordinates of a single point 3D
+typedef struct s_point3D
+{
+	double		x;
+	double		y;
+	double		z;
+	uint32_t	color;
+}	t_point3D;
+
+// define a struct for the coordinates of a single point 2D
+typedef struct s_point2D
+{
+	double	x;
+	double	y;
+}	t_point2D;
+
 
 // define a struct for all points of a map
 typedef struct s_map
@@ -101,6 +115,8 @@ typedef struct s_projection
 	int		zoom;
 	float	move_x;
 	float	move_y;
+	int		x_offset;
+	int		y_offset;
 	double	alpha;
 	double	beta;
 	double	gamma;
@@ -112,9 +128,7 @@ typedef struct s_fdf
 	mlx_image_t		*image;
 	t_map			map;
 	t_list			*map_lines;
-	t_projection	projection;
-	int				x_offset;
-	int				y_offset;
+	t_projection	project;
 }	t_fdf;
 
 /*****************************************************************************/
@@ -144,7 +158,10 @@ t_point3D	rotate_y(t_point3D point, double angle);
 t_point3D	rotate_z(t_point3D point, double angle);
 
 // projection functions in project.c
-t_point2D	isometric(t_point3D point);
+t_point2D	projection(t_fdf fdf, t_point3D point);
+
+// drawing functions in draw.c
+void	draw_main(t_map map, t_fdf *fdf);
 
 // WARNING: ONLY TESTFUNCTIONS!!!! REMOVE LATER
 void	print_test(t_fdf * fdf);
