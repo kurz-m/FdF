@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/08 18:32:27 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/08 22:27:01 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	get_points(t_fdf *fdf)
 		columns = ft_split((char *) rows->content, ' ');
 		while (++x < fdf->map.width)
 			//TODO: change values of y here
-			set_point(&fdf->map, x, fdf->map.height - y, ft_atoi(columns[x]));
+			set_point(&fdf->map, x, y, ft_atoi(columns[x]));
 		++y;
 		rows = rows->next;
 	}
