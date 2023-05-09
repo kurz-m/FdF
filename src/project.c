@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:53:18 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/09 06:09:50 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/09 09:00:19 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static t_point2D	isometric(t_point3D point, t_map map, t_projection project)
 	// printf("Z: %f\n", point.z);
 	
 	rad = ISO_PROJECTION * M_PI / 180.0;
-	// rad_2 = 35.624 * M_PI / 180.0;
+	rad_2 = 35.624 * M_PI / 180.0;
 	// draw.x = point.x * cos(rad) - point.z * cos(rad);
 	// draw.y = point.x * sin(rad_2) + point.y * cos(rad_2) - point.z * sin(rad_2);
 	// draw.x = round((point.x - point.y) * cos(rad));
@@ -46,13 +46,9 @@ static t_point2D	isometric(t_point3D point, t_map map, t_projection project)
 	// draw.x = point.x;
 	// draw.y = point.y;
 	// printf("offset_x: %f, width: %i, WIDTH: %i\n", round(project.x_offset * project.zoom), map.width * project.zoom, WIDTH);
-	draw.x -= (project.x_offset * project.zoom)
-		- (round((map.width * project.zoom) / 2))
-		- (WIDTH / 2);
+	draw.x -= (project.x_offset * project.zoom) - (WIDTH / 2);
 	// printf("offset_y: %f, width: %i, HEIGHT: %i\n", round(project.y_offset * project.zoom), map.height * project.zoom, HEIGHT);
-	draw.y -= (project.y_offset * project.zoom)
-		- (round((map.height * project.zoom) / 2))
-		- (HEIGHT / 2);
+	draw.y -= (project.y_offset * project.zoom) - (HEIGHT / 2);
 	// printf("X: %f ", draw.x);
 	// printf("Y: %f\n", draw.y);
 	return (draw);
@@ -66,10 +62,10 @@ t_point2D	projection(t_fdf fdf, t_point3D point)
 	point.y *= fdf.project.zoom;
 	point.z *= fdf.project.zoom;
 	// TODO: initiate projection values according to view
-	// point = rotate_y(point, -46);
+	// point = rotate_y(point, 45);
 	// point = rotate_x(point, 180);
-	// point = rotate_y(point, -fdf.project.alpha);
-	// point = rotate_x(point, fdf.project.beta);
+	point = rotate_x(point, fdf.project.beta);
+	point = rotate_y(point, fdf.project.alpha);
 	// point = rotate_x(point, 180);
 	// printf("X: %f ", point.x);
 	// printf("Y: %f ", point.y);

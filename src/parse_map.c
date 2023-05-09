@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/09 06:52:23 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/09 08:51:09 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ static void	get_points(t_fdf *fdf)
 	int		x;
 	int		y;
 
-	y = 1;
+	y = -1;
 	rows = fdf->map_lines;
-	while (fdf->map.height - y >= 0)
+	while (++y < fdf->map.height)
 	{
 		if (rows == NULL)
 			break ;
@@ -76,11 +76,9 @@ static void	get_points(t_fdf *fdf)
 		columns = ft_split((char *) rows->content, ' ');
 		while (++x < fdf->map.width)
 			set_point(&fdf->map, x, y, ft_atoi(columns[x]));
-		++y;
 		rows = rows->next;
 	}
 	ft_arrfree(columns);
-	printf("SEGHERE????????\n");
 }
 
 void	parse_map(char *file_name, t_fdf *fdf)
