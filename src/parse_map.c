@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/08 22:27:01 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/09 06:52:23 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	set_point(t_map *map, int x, int y, int z)
 {
 	map->coords[x][y].x = (double) x;
 	map->coords[x][y].y = (double) y;
-	map->coords[x][y].z = -(double) z;
+	map->coords[x][y].z = (double) z;
 	map->coords[x][y].color = 0xFFFFFFFF;
 }
 
@@ -75,12 +75,12 @@ static void	get_points(t_fdf *fdf)
 		x = -1;
 		columns = ft_split((char *) rows->content, ' ');
 		while (++x < fdf->map.width)
-			//TODO: change values of y here
 			set_point(&fdf->map, x, y, ft_atoi(columns[x]));
 		++y;
 		rows = rows->next;
 	}
 	ft_arrfree(columns);
+	printf("SEGHERE????????\n");
 }
 
 void	parse_map(char *file_name, t_fdf *fdf)

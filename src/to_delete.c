@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 15:16:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/03 15:16:58 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/09 06:16:28 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	print_test(t_fdf * fdf)
 		x = 0;
 		while (x < fdf->map.width)
 		{
+			printf("X: %i\n", x);
 			printf("x: %f, y: %f, z: %f\n", \
 					fdf->map.coords[x][y].x, \
 					fdf->map.coords[x][y].y, \
