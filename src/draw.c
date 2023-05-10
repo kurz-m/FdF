@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 07:17:51 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/08 17:52:16 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/10 15:22:23 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,30 @@ static void	draw_pixel(t_fdf *fdf, t_point2D point, uint32_t color)
 
 static void	init_bresenham(t_bresenham *bresen, t_point2D p1, t_point2D p2)
 {
-	bresen->dx = abs((int) round(p2.x) - (int) round(p1.x));
-	bresen->dy = -abs((int) round(p2.y) - (int) round(p1.y));
-	if (p1.x < p2.x)
-		bresen->sx = 1;
-	else
+	bresen->dx = p2.x - p1.x;
+	bresen->dy = p2.y - p1.y;
+	// bresen->dx = abs((int) round(p2.x) - (int) round(p1.x));
+	// bresen->dy = -abs((int) round(p2.y) - (int) round(p1.y));
+	if (bresen->dx < 0)
 		bresen->sx = -1;
-	if (p1.y < p2.y)
-		bresen->sx = 1;
 	else
-		bresen->sx = -1;
-	bresen->error = bresen->dx + bresen->dy;
+		bresen->sx = 1;
+	if (bresen->dy < 0)
+		bresen->sy = -1;
+	else
+		bresen->sy = 1;
+	bresen->dx = abs((int) round(bresen->dx));
+	bresen->dy = abs((int) round(bresen->dy));
+	// if (p1.x < p2.x)
+	// 	bresen->sx = 1;
+	// else
+	// 	bresen->sx = -1;
+	// if (p1.y < p2.y)
+	// 	bresen->sx = 1;
+	// else
+	// 	bresen->sx = -1;
+	// bresen->error = bresen->dx + bresen->dy;
+	bresen->error = 2 * bresen->dy - bresen->dx;
 }
 
 static void	bresenham(t_fdf *fdf, t_point2D p1, t_point2D p2)
@@ -43,19 +56,25 @@ static void	bresenham(t_fdf *fdf, t_point2D p1, t_point2D p2)
 	while (p1.x != p2.x && p1.y != p2.y)
 	{
 		draw_pixel(fdf, p1, C_WHITE);
+		if (bresen.error > 0)
+		{
+			p1.y += bresen.sy;
+			bresen.error -= 2 * bresen.dx;
+		}
+		p1.x += bresen.sx;
+		bresen.error += 2 * bresen.dy;
 		// if (p1.x == p2.x && p1.y == p2.y)
 		// 	break ;
-		bresen.e2 = 2 * bresen.error;
-		if (bresen.e2 >= bresen.dy)
-		{
-			bresen.error += bresen.dy;
-			p1.x += bresen.sx;
-		}
-		if (bresen.e2 <= bresen.dx)
-		{
-			bresen.error += bresen.dx;
-			p1.x += bresen.sy;
-		}
+		// if (bresen.e2 >= bresen.dy)
+		// {
+		// 	bresen.error += bresen.dy;
+		// 	p1.x += bresen.sx;
+		// }
+		// if (bresen.e2 <= bresen.dx)
+		// {
+		// 	bresen.error += bresen.dx;
+		// 	p1.x += bresen.sy;
+		// }
 	}
 }
 
