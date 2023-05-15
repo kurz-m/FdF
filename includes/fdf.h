@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/08 17:20:21 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/15 13:44:50 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ typedef struct s_point3D
 // define a struct for the coordinates of a single point 2D
 typedef struct s_point2D
 {
-	double	x;
-	double	y;
+	int		x;
+	int		y;
 }	t_point2D;
 
 

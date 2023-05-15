@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:53:18 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/15 09:08:42 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/15 13:45:05 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@
 static t_point2D	isometric(t_point3D point, t_projection project)
 {
 	t_point2D	draw;
-	double		rad;
-	double		rad_2;
 
-	draw.x = (point.x - point.y) * cos(0.523599);
-	draw.y = (-point.z + (point.x + point.y)) * sin(0.523599);
+	draw.x = round((point.x - point.y) * cos(0.523599));
+	draw.y = round((-point.z + (point.x + point.y)) * sin(0.523599));
 	draw.x -= (project.x_offset * project.zoom) - (WIDTH / 2);
 	draw.y -= (project.y_offset * project.zoom) - (HEIGHT / 2);
 	return (draw);
