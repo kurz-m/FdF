@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 07:17:51 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/10 15:22:23 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/15 09:09:51 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,9 @@ void	draw_main(t_map map, t_fdf *fdf)
 		// while (++x < map.width - 1)
 		while (++x < map.width)
 		{
-			// printf("height: %i, widht: %i\n", y, x);
 			// bresenham(fdf, projection(*fdf, map.coords[x][y]),
 			// 	projection(*fdf, map.coords[x + 1][y]));
 			// bresenham(fdf, projection(*fdf, map.coords[x][y]),
-			// if (map.coords[x][y].z != 0)
-			// 	continue ;
 			// 	projection(*fdf, map.coords[x][y + 1]));
 			draw_pixel(fdf, projection(*fdf, map.coords[x][y]), C_WHITE);
 		}
