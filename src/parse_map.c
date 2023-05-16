@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/09 08:51:09 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/16 10:34:24 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static t_list	*read_file(char *file_name, t_fdf *fdf)
 	t_list	*head;
 	int		fd;
 
+	head = NULL;
 	head = malloc(sizeof(t_list));
 	if (head == NULL)
 		error_handling(INIT_ERROR);
-	head = NULL;
 	fdf->map.height = 0;
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
