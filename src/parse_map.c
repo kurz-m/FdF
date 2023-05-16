@@ -6,12 +6,13 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/16 10:34:24 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/16 14:33:46 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+// Read the file and store it for later parsing into a linked list
 static t_list	*read_file(char *file_name, t_fdf *fdf)
 {
 	char	*line;
@@ -19,9 +20,6 @@ static t_list	*read_file(char *file_name, t_fdf *fdf)
 	int		fd;
 
 	head = NULL;
-	head = malloc(sizeof(t_list));
-	if (head == NULL)
-		error_handling(INIT_ERROR);
 	fdf->map.height = 0;
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
@@ -39,6 +37,7 @@ static t_list	*read_file(char *file_name, t_fdf *fdf)
 	return (head);
 }
 
+// Get the width of the map
 static int	get_width(t_fdf *fdf)
 {
 	int		width;
@@ -51,6 +50,7 @@ static int	get_width(t_fdf *fdf)
 	return (width);
 }
 
+// Set the point into the map matrix
 static void	set_point(t_map *map, int x, int y, int z)
 {
 	map->coords[x][y].x = (double) x;
@@ -59,6 +59,7 @@ static void	set_point(t_map *map, int x, int y, int z)
 	map->coords[x][y].color = 0xFFFFFFFF;
 }
 
+// Extract the points from the linked list
 static void	get_points(t_fdf *fdf)
 {
 	t_list	*rows;
@@ -81,6 +82,7 @@ static void	get_points(t_fdf *fdf)
 	ft_arrfree(columns);
 }
 
+// Parse the map that is loaded
 void	parse_map(char *file_name, t_fdf *fdf)
 {
 	fdf->map_lines = read_file(file_name, fdf);
@@ -90,5 +92,5 @@ void	parse_map(char *file_name, t_fdf *fdf)
 	init_map(&fdf->map);
 	get_points(fdf);
 	ft_lstclear(&fdf->map_lines, &free);
-	// print_test(fdf);
+	print_test(fdf);
 }

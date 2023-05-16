@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 07:17:51 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/15 13:46:20 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/16 13:55:19 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,11 @@ void	draw_main(t_map map, t_fdf *fdf)
 		// while (++x < map.width - 1)
 		while (++x < map.width)
 		{
-			bresenham(fdf, projection(*fdf, map.coords[x][y]),
-				projection(*fdf, map.coords[x + 1][y]));
-			bresenham(fdf, projection(*fdf, map.coords[x][y]),
-				projection(*fdf, map.coords[x][y + 1]));
-			// draw_pixel(fdf, projection(*fdf, map.coords[x][y]), C_WHITE);
+			// bresenham(fdf, projection(*fdf, map.coords[x][y]),
+			// 	projection(*fdf, map.coords[x + 1][y]));
+			// bresenham(fdf, projection(*fdf, map.coords[x][y]),
+			// 	projection(*fdf, map.coords[x][y + 1]));
+			draw_pixel(fdf, projection(*fdf, map.coords[x][y]), C_WHITE);
 		}
 	}
 }
