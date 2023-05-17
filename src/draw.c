@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 07:17:51 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/17 14:51:22 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/17 17:39:42 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	bresenham(t_fdf *fdf, t_point2D p1, t_point2D p2)
 	init_bresenham(&bresen, p1, p2);
 	while (1)
 	{
-		draw_pixel(fdf, p1, C_WHITE);
+		draw_pixel(fdf, p1, C_TEAL);
 		if (p1.x == p2.x && p1.y == p2.y)
 			break ;
 		bresen.e2 = 2 * bresen.error;
@@ -68,15 +68,17 @@ void	draw_main(t_map map, t_fdf *fdf)
 
 	y = -1;
 	ft_bzero(fdf->image->pixels, WIDTH * HEIGHT * 4);
-	while (++y < map.height - 1)
+	while (++y < map.height)
 	{
 		x = -1;
-		while (++x < map.width - 1)
+		while (++x < map.width)
 		{
+			if (x < map.width - 1)
 			bresenham(fdf, projection(*fdf, map.coords[x][y]),
 				projection(*fdf, map.coords[x + 1][y]));
-			bresenham(fdf, projection(*fdf, map.coords[x][y]),
-				projection(*fdf, map.coords[x][y + 1]));
+			if (y < map.height - 1)
+				bresenham(fdf, projection(*fdf, map.coords[x][y]),
+					projection(*fdf, map.coords[x][y + 1]));
 		}
 	}
 }
