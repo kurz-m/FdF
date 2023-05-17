@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 07:17:51 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/16 16:15:36 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/17 12:36:35 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,29 @@ static void	draw_pixel(t_fdf *fdf, t_point2D point, uint32_t color)
 
 static void	init_bresenham(t_bresenham *bresen, t_point2D p1, t_point2D p2)
 {
-	bresen->dx = p2.x - p1.x;
-	bresen->dy = p2.y - p1.y;
-	bresen->pixels = sqrt((bresen->dx * bresen->dx) + \
-			(bresen->dy * bresen->dy));
+	bresen->dx = abs(p2.x - p1.x);
+	bresen->dy = abs(p2.y - p1.y);
+	bresen->pixels = 1;
+	if (bresen->dx > bresen->dy)
+		bresen->tmp = bresen->dx;
+	else
+		bresen->tmp = bresen->dy;
+	if (bresen->tmp != 0)
+		bresen->pixels = bresen->tmp;
+	// TODO: add agavrel bresenham algorithm here.
+	bresen->sx = bresen->dx / bresen->tmp;
+	// bresen->pixels = sqrt((bresen->dx * bresen->dx) + \
+	// 		(bresen->dy * bresen->dy));
 	// printf("delta x: %i  delta y: %i\n", bresen->dx, bresen->dx);
-	bresen->dx /= bresen->pixels;
-	bresen->dy /= bresen->pixels;
+	// bresen->dx /= bresen->pixels;
+	// bresen->dy /= bresen->pixels;
 	// printf("pixels: %i  x: %i, y: %i\n", bresen->pixels, p1.x, p1.y);
 }
 
 static void	bresenham(t_fdf *fdf, t_point2D p1, t_point2D p2)
 {
 	t_bresenham		bresen;
-	int				pixels;
 
-	pixels = 0;
 	init_bresenham(&bresen, p1, p2);
 	while (bresen.pixels)
 	{
