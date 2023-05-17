@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/17 08:13:37 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/17 14:37:18 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ typedef struct s_bresenham
 	int		dy;
 	int		sx;
 	int		sy;
-	int		tmp;
+	int		error;
+	int		e2;
 	int		pixels;
 }	t_bresenham;
 

@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 07:17:51 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/17 12:36:35 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/17 14:51:22 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,16 @@ static void	draw_pixel(t_fdf *fdf, t_point2D point, uint32_t color)
 static void	init_bresenham(t_bresenham *bresen, t_point2D p1, t_point2D p2)
 {
 	bresen->dx = abs(p2.x - p1.x);
-	bresen->dy = abs(p2.y - p1.y);
-	bresen->pixels = 1;
-	if (bresen->dx > bresen->dy)
-		bresen->tmp = bresen->dx;
+	bresen->dy = -abs(p2.y - p1.y);
+	if (p1.x < p2.x)
+		bresen->sx = 1;
 	else
-		bresen->tmp = bresen->dy;
-	if (bresen->tmp != 0)
-		bresen->pixels = bresen->tmp;
-	// TODO: add agavrel bresenham algorithm here.
-	bresen->sx = bresen->dx / bresen->tmp;
-	// bresen->pixels = sqrt((bresen->dx * bresen->dx) + \
-	// 		(bresen->dy * bresen->dy));
-	// printf("delta x: %i  delta y: %i\n", bresen->dx, bresen->dx);
-	// bresen->dx /= bresen->pixels;
-	// bresen->dy /= bresen->pixels;
-	// printf("pixels: %i  x: %i, y: %i\n", bresen->pixels, p1.x, p1.y);
+		bresen->sx = -1;
+	if (p1.y < p2.y)
+		bresen->sy = 1;
+	else
+		bresen->sy = -1;
+	bresen->error = bresen->dx + bresen->dy;
 }
 
 static void	bresenham(t_fdf *fdf, t_point2D p1, t_point2D p2)
@@ -44,12 +38,26 @@ static void	bresenham(t_fdf *fdf, t_point2D p1, t_point2D p2)
 	t_bresenham		bresen;
 
 	init_bresenham(&bresen, p1, p2);
-	while (bresen.pixels)
+	while (1)
 	{
 		draw_pixel(fdf, p1, C_WHITE);
-		p1.x += bresen.dx;
-		p1.y += bresen.dy;
-		--bresen.pixels;
+		if (p1.x == p2.x && p1.y == p2.y)
+			break ;
+		bresen.e2 = 2 * bresen.error;
+		if (bresen.e2 >= bresen.dy)
+		{
+			if (p1.x == p2.x)
+				break ;
+			bresen.error += bresen.dy;
+			p1.x += bresen.sx;
+		}
+		if (bresen.e2 <= bresen.dx)
+		{
+			if (p1.y == p2.y)
+				break ;
+			bresen.error += bresen.dx;
+			p1.y += bresen.sy;
+		}
 	}
 }
 
@@ -60,18 +68,15 @@ void	draw_main(t_map map, t_fdf *fdf)
 
 	y = -1;
 	ft_bzero(fdf->image->pixels, WIDTH * HEIGHT * 4);
-	// while (++y < map.height)
 	while (++y < map.height - 1)
 	{
 		x = -1;
 		while (++x < map.width - 1)
-		// while (++x < map.width)
 		{
 			bresenham(fdf, projection(*fdf, map.coords[x][y]),
 				projection(*fdf, map.coords[x + 1][y]));
 			bresenham(fdf, projection(*fdf, map.coords[x][y]),
 				projection(*fdf, map.coords[x][y + 1]));
-			// draw_pixel(fdf, projection(*fdf, map.coords[x][y]), C_WHITE);
 		}
 	}
 }
