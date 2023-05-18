@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/17 14:37:18 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/18 18:43:16 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,6 @@ typedef struct s_projection
 {
 	int		type;
 	int		zoom;
-	float	move_x;
-	float	move_y;
 	int		x_offset;
 	int		y_offset;
 	double	alpha;
@@ -164,6 +162,10 @@ t_point2D	projection(t_fdf fdf, t_point3D point);
 
 // drawing functions in draw.c
 void	draw_main(t_map map, t_fdf *fdf);
+
+// hook functions
+void	key_inputs(void *tmp);
+void	move(int key, t_fdf *fdf);
 
 // WARNING: ONLY TESTFUNCTIONS!!!! REMOVE LATER
 void	print_test(t_fdf * fdf);

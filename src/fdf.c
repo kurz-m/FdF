@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:00:55 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/09 08:45:36 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/18 18:44:08 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int32_t	main(int argc, char **argv)
 	if(mlx_image_to_window(fdf->mlx, fdf->image, 0, 0) < 0)
 		// TODO: clean up fdf etc.
 		error_handling(IMG_INIT_ERROR);
+	mlx_loop_hook(fdf->mlx, &key_inputs, fdf);
 	mlx_loop(fdf->mlx);
 	mlx_terminate(fdf->mlx);
 	return (EXIT_SUCCESS);
