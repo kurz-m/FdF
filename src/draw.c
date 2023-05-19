@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 07:17:51 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/17 17:39:42 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/19 15:51:00 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static void	bresenham(t_fdf *fdf, t_point2D p1, t_point2D p2)
 	init_bresenham(&bresen, p1, p2);
 	while (1)
 	{
-		draw_pixel(fdf, p1, C_TEAL);
+		// draw_pixel(fdf, p1, fdf->project.color);
+		draw_pixel(fdf, p1, C_WHITE);
 		if (p1.x == p2.x && p1.y == p2.y)
 			break ;
 		bresen.e2 = 2 * bresen.error;

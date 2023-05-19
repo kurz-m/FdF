@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 15:34:23 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/19 10:38:44 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/19 15:49:19 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,31 @@ void	init_map(t_map *map)
 	}
 }
 
+// static void	init_color_array(t_projection *project)
+// {
+// 	project->color_array[0] = C_TEAL;
+// 	project->color_array[1] = C_BURNT;
+// 	project->color_array[2] = C_WHITE;
+// 	project->color_array[3] = C_RED;
+// 	project->color_array[4] = C_GREEN;
+// 	project->color_array[5] = C_VIOLET;
+// 	project->color_array[6] = C_SKY;
+// 	project->color_array[7] = C_BEIGE;
+// 	project->color_array[8] = C_FOREST;
+// 	project->color_array[9] = C_YELLOW;
+// }
+
 static void	init_projection(t_fdf *fdf)
 {
 	fdf->project.type = ISOMETRIC;
 	fdf->project.zoom = 10;
-	// fdf->project.x_offset = fdf->map.width / 2;
-	// fdf->project.y_offset = fdf->map.height / 2;
 	fdf->project.x_offset = 0;
 	fdf->project.y_offset = 0;
 	fdf->project.alpha = 0;
 	fdf->project.beta = 0;
 	fdf->project.gamma = 0;
+	fdf->project.color = C_WHITE;
+	// init_color_array(&fdf->project);
 }
 
 static void	init_mlx(t_fdf *fdf)

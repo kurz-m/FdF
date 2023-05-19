@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/19 13:38:02 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/19 15:49:51 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <stdio.h>
+# include <time.h>
 
 // Include the MLX42 library
 # include "MLX42.h"
@@ -50,6 +51,11 @@
 # define C_WHITE 0xFFFFFFFF
 # define C_RED 0xD63447FF
 # define C_GREEN 0x446A46FF
+# define C_VIOLET 0x9B59B6FF
+# define C_SKY 0x3498DBFF
+# define C_BEIGE 0xFFEEB3FF
+# define C_FOREST 0x41644AFF
+# define C_YELLOW 0xFFEA20FF
 //
 // define enum for projection type
 enum e_project
@@ -88,7 +94,6 @@ typedef struct s_point3D
 	double		x;
 	double		y;
 	double		z;
-	uint32_t	color;
 }	t_point3D;
 
 // define a struct for the coordinates of a single point 2D
@@ -113,13 +118,15 @@ typedef struct s_map
 // define a struct for the projection
 typedef struct s_projection
 {
-	int		type;
-	int		zoom;
-	int		x_offset;
-	int		y_offset;
-	double	alpha;
-	double	beta;
-	double	gamma;
+	int			type;
+	int			zoom;
+	int			x_offset;
+	int			y_offset;
+	double		alpha;
+	double		beta;
+	double		gamma;
+// 	uint32_t	color_array[10];
+	uint32_t	color;
 }	t_projection;
 
 typedef struct s_fdf

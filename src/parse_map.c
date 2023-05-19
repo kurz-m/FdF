@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/16 15:35:36 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/19 15:18:44 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static void	set_point(t_map *map, int x, int y, int z)
 	map->coords[x][y].x = (double) x;
 	map->coords[x][y].y = (double) y;
 	map->coords[x][y].z = (double) z;
-	map->coords[x][y].color = 0xFFFFFFFF;
 }
 
 // Extract the points from the linked list

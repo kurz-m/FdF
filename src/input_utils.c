@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:33:28 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/19 13:45:52 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/19 15:46:57 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,4 @@ void	anti_rotate(int key, t_fdf *fdf)
 	if (key == MLX_KEY_D)
 		fdf->project.gamma -= 1;
 	draw_main(fdf->map, fdf);
-}
-
-void	random_color()
-{
 }

@@ -6,36 +6,36 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:00:55 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/18 18:44:08 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/19 15:51:18 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// void	init_window(t_fdf *fdf)
+// void	random_color(t_fdf *fdf)
 // {
-// 	int		i;
-// 	int		j;
+// 	int		choice;
 // 
-// 	i = -1;
-// 	fdf->mlx = mlx_init(WIDTH, HEIGHT, "FdF", true);
-// 	if (!fdf->mlx)
-// 		exit(EXIT_FAILURE);
-// 	fdf->image = mlx_new_image(fdf->mlx, WIDTH, HEIGHT);
-// 	mlx_image_to_window(fdf->mlx, fdf->image, 0, 0);
-// 	while (++i < 20)
-// 	{
-// 		j = -1;
-// 		while (++j < 40)
-// 			mlx_put_pixel(fdf->image, 20 + j, 20 + i, 0xFFFFFFFF);
-// 	}
+// 	choice = rand() % 10;
+// 	fdf->project.color = fdf->project.color_array[choice];
+// 	draw_main(fdf->map, fdf);
 // }
 // 
+// void	static_keys(mlx_key_data_t keydata, void *tmp)
+// {
+// 	t_fdf	*fdf;
+// 
+// 	fdf = (t_fdf *) tmp;
+// 	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
+// 		random_color(fdf);
+// }
+
 int32_t	main(int argc, char **argv)
 {
 	t_fdf	*fdf;
 	char	*file_name;
 
+	// srand(time(NULL));
 	// FIX: check if file is named *.fdf!!!
 	if (argc != 2)
 		error_handling(USAGE);
@@ -45,6 +45,7 @@ int32_t	main(int argc, char **argv)
 	if(mlx_image_to_window(fdf->mlx, fdf->image, 0, 0) < 0)
 		// TODO: clean up fdf etc.
 		error_handling(IMG_INIT_ERROR);
+	// mlx_key_hook(fdf->mlx, &static_keys, fdf);
 	mlx_loop_hook(fdf->mlx, &key_inputs, fdf);
 	mlx_loop(fdf->mlx);
 	mlx_terminate(fdf->mlx);
