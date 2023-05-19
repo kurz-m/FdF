@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/18 18:43:40 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/19 13:38:32 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ LIBS :=	\
 # Name all source files
 SRCS := \
 			exits.c fdf.c init.c parse_map.c draw.c to_delete.c	\
-			project.c rotate.c key_inputs.c
+			project.c rotate.c key_inputs.c input_utils.c
 
 
 # Define a directory for object files

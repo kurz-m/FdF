@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 15:34:23 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/18 18:38:53 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/19 10:38:44 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	init_map(t_map *map)
 static void	init_projection(t_fdf *fdf)
 {
 	fdf->project.type = ISOMETRIC;
-	fdf->project.zoom = 20;
+	fdf->project.zoom = 10;
 	// fdf->project.x_offset = fdf->map.width / 2;
 	// fdf->project.y_offset = fdf->map.height / 2;
 	fdf->project.x_offset = 0;

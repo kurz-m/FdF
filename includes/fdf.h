@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/18 18:43:16 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/19 13:38:02 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,9 +163,14 @@ t_point2D	projection(t_fdf fdf, t_point3D point);
 // drawing functions in draw.c
 void	draw_main(t_map map, t_fdf *fdf);
 
-// hook functions
+// hook functions in key_inputs.c
 void	key_inputs(void *tmp);
+
+// util functions for input in input_utils.c
 void	move(int key, t_fdf *fdf);
+void	zoom(int key, t_fdf *fdf);
+void	rotate(int key, t_fdf *fdf);
+void	anti_rotate(int key, t_fdf *fdf);
 
 // WARNING: ONLY TESTFUNCTIONS!!!! REMOVE LATER
 void	print_test(t_fdf * fdf);
