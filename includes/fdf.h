@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/19 15:49:51 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/19 23:52:34 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ typedef struct s_projection
 	double		alpha;
 	double		beta;
 	double		gamma;
-// 	uint32_t	color_array[10];
+	uint32_t	color_array[10];
 	uint32_t	color;
 }	t_projection;
 
@@ -178,6 +178,10 @@ void	move(int key, t_fdf *fdf);
 void	zoom(int key, t_fdf *fdf);
 void	rotate(int key, t_fdf *fdf);
 void	anti_rotate(int key, t_fdf *fdf);
+
+// choose random color in random_color.c
+void	random_color(t_fdf *fdf);
+void	static_keys(mlx_key_data_t keydata, void *tmp);
 
 // WARNING: ONLY TESTFUNCTIONS!!!! REMOVE LATER
 void	print_test(t_fdf * fdf);
