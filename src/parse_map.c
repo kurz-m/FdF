@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/20 15:21:07 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/20 21:09:19 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	set_point(t_map *map, int x, int y, int z)
 	map->coords[x][y].x = (double) x;
 	map->coords[x][y].y = (double) y;
 	map->coords[x][y].z = (double) z;
+	to_polar(map, x, y);
 }
 
 // Extract the points from the linked list

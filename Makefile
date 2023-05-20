@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/20 16:36:37 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/20 20:55:53 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ LIBS :=	\
 SRCS := \
 			exits.c fdf.c init.c parse_map.c draw.c to_delete.c	\
 			project.c rotate.c loop_inputs.c input_utils.c		\
-			random_color.c key_inputs.c
+			random_color.c key_inputs.c testing.c
 
 
 # Define a directory for object files
