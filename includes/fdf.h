@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/20 15:46:49 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/20 18:54:42 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@
 enum e_project
 {
 	ISOMETRIC,
-	PARALLEL,
+	OBLIQUE,
 };
 
 // define enum for error handling
