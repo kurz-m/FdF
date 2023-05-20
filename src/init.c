@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 15:34:23 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/19 23:41:08 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/20 14:59:19 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,11 @@ t_fdf	*init_fdf(char *file_name)
 {
 	t_fdf	*fdf;
 
+	fdf = NULL;
 	fdf = malloc(sizeof(t_fdf));
-	init_mlx(fdf);
 	if (fdf == NULL)
 		error_handling(INIT_ERROR);
+	init_mlx(fdf);
 	parse_map(file_name, fdf);
 	init_projection(fdf);
 	return (fdf);

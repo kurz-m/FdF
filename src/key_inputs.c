@@ -5,57 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 18:07:28 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/19 13:37:14 by makurz           ###   ########.fr       */
+/*   Created: 2023/05/20 14:42:13 by makurz            #+#    #+#             */
+/*   Updated: 2023/05/20 17:05:24 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	move_inputs(t_fdf *fdf)
+void	change_projection(t_fdf *fdf, int key)
 {
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_UP))
-		move(MLX_KEY_UP, fdf);
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_DOWN))
-		move(MLX_KEY_DOWN, fdf);
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_LEFT))
-		move(MLX_KEY_LEFT, fdf);
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_RIGHT))
-		move(MLX_KEY_RIGHT, fdf);
+	if (key == MLX_KEY_K)
+	{
+		fdf->project.type = ISOMETRIC;
+		fdf->project.alpha = 0;
+		fdf->project.beta = 0;
+		fdf->project.gamma = 0;
+	}
+	if (key == MLX_KEY_L)
+	{
+		fdf->project.type = PARALLEL;
+		fdf->project.alpha = 0;
+		fdf->project.beta = -45;
+		fdf->project.gamma = 0;
+	}
+	draw_main(fdf->map, fdf);
 }
 
-static void	zoom_inputs(t_fdf *fdf)
-{
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_I))
-		zoom(MLX_KEY_I, fdf);
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_O))
-		zoom(MLX_KEY_O, fdf);
-}
-
-static void	rotate_inputs(t_fdf *fdf)
-{
-	if (mlx_is_key_down(fdf->mlx, 340) && mlx_is_key_down(fdf->mlx, MLX_KEY_A))
-		anti_rotate(MLX_KEY_A, fdf);
-	else if (mlx_is_key_down(fdf->mlx, MLX_KEY_A))
-		rotate(MLX_KEY_A, fdf);
-	if (mlx_is_key_down(fdf->mlx, 340) && mlx_is_key_down(fdf->mlx, MLX_KEY_S))
-		anti_rotate(MLX_KEY_S, fdf);
-	else if (mlx_is_key_down(fdf->mlx, MLX_KEY_S))
-		rotate(MLX_KEY_S, fdf);
-	if (mlx_is_key_down(fdf->mlx, 340) && mlx_is_key_down(fdf->mlx, MLX_KEY_D))
-		anti_rotate(MLX_KEY_D, fdf);
-	else if (mlx_is_key_down(fdf->mlx, MLX_KEY_D))
-		rotate(MLX_KEY_D, fdf);
-}
-
-void	key_inputs(void *tmp)
+// function for single key press input
+void	static_keys(mlx_key_data_t keydata, void *tmp)
 {
 	t_fdf	*fdf;
 
 	fdf = (t_fdf *) tmp;
-	move_inputs(fdf);
-	zoom_inputs(fdf);
-	rotate_inputs(fdf);
-	if (mlx_is_key_down(fdf->mlx, MLX_KEY_ESCAPE))
-		; ;
+	if (keydata.key == MLX_KEY_SPACE && keydata.action == MLX_PRESS)
+		random_color(fdf);
+	if (keydata.key == MLX_KEY_R && keydata.action == MLX_PRESS)
+		complete_random_color(fdf);
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		clean_exit(fdf, SUCCESS);
+	if (keydata.key == MLX_KEY_K && keydata.action == MLX_PRESS)
+		change_projection(fdf,MLX_KEY_K);
+	if (keydata.key == MLX_KEY_L && keydata.action == MLX_PRESS)
+		change_projection(fdf,MLX_KEY_L);
 }

@@ -6,12 +6,13 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:53:37 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/08 14:23:46 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/20 16:09:14 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+// function to rotate around the x-Axis of the image
 t_point3D	rotate_x(t_point3D point, double angle)
 {
 	double		rad;
@@ -26,6 +27,7 @@ t_point3D	rotate_x(t_point3D point, double angle)
 	return (point);
 }
 
+// function to rotate around the y-Axis of the image
 t_point3D	rotate_y(t_point3D point, double angle)
 {
 	double		rad;
@@ -40,6 +42,7 @@ t_point3D	rotate_y(t_point3D point, double angle)
 	return (point);
 }
 
+// function to rotate around the z-Axis of the image
 t_point3D	rotate_z(t_point3D point, double angle)
 {
 	double		rad;
