@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/19 15:18:44 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/20 00:01:16 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static void	get_points(t_fdf *fdf)
 	int		y;
 
 	y = -1;
+	columns = NULL;
 	rows = fdf->map_lines;
 	while (++y < fdf->map.height)
 	{
