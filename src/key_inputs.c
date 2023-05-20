@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:42:13 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/20 17:05:24 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/20 19:05:37 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	change_projection(t_fdf *fdf, int key)
 	}
 	if (key == MLX_KEY_L)
 	{
-		fdf->project.type = PARALLEL;
+		fdf->project.type = OBLIQUE;
 		fdf->project.alpha = 0;
 		fdf->project.beta = -45;
 		fdf->project.gamma = 0;
@@ -44,7 +44,7 @@ void	static_keys(mlx_key_data_t keydata, void *tmp)
 	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		clean_exit(fdf, SUCCESS);
 	if (keydata.key == MLX_KEY_K && keydata.action == MLX_PRESS)
-		change_projection(fdf,MLX_KEY_K);
+		change_projection(fdf, MLX_KEY_K);
 	if (keydata.key == MLX_KEY_L && keydata.action == MLX_PRESS)
-		change_projection(fdf,MLX_KEY_L);
+		change_projection(fdf, MLX_KEY_L);
 }
