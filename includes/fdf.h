@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/20 18:54:42 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/20 21:33:48 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ typedef struct s_point3D
 	double		x;
 	double		y;
 	double		z;
+	double		longitude;
+	double		latitude;
 }	t_point3D;
 
 // define a struct for the coordinates of a single point 2D
@@ -114,6 +116,7 @@ typedef struct s_map
 	int			height;
 	int			max_z;
 	int			min_z;
+	int			radius;
 }	t_map;
 
 // define a struct for the projection
@@ -187,6 +190,10 @@ void	complete_random_color(t_fdf *fdf);
 
 // input for single key press in key_inputs.c
 void	static_keys(mlx_key_data_t keydata, void *tmp);
+
+// polar
+void	to_polar(t_map *map, int x, int y);
+t_point3D	spherize(t_map map, t_point3D point);
 
 // WARNING: ONLY TESTFUNCTIONS!!!! REMOVE LATER
 void	print_test(t_fdf * fdf);
