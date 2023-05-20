@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/20 00:01:16 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/20 15:21:07 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,10 @@ static void	get_points(t_fdf *fdf)
 		while (++x < fdf->map.width)
 			set_point(&fdf->map, x, y, ft_atoi(columns[x]));
 		rows = rows->next;
+		ft_arrfree(columns);
+		columns = NULL;
 	}
-	ft_arrfree(columns);
+	// ft_arrfree(columns);
 }
 
 // Parse the map that is loaded

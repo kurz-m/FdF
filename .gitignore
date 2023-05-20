@@ -59,3 +59,4 @@ Libft/
 .ccls-cache
 fdf
 FdF
+LeakSanitizer/

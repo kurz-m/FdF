@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/19 23:52:34 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/20 15:46:49 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ enum e_errors
 	MAP_ERROR,
 	COORDS_ERROR,
 	SIZE_ERROR,
+	MALLOC_ERROR,
 };
 
 typedef struct s_bresenham
@@ -158,6 +159,7 @@ void	parse_map(char *file_name, t_fdf *fdf);
 // Function for different error handling codes
 void	error_handling(int exit_code);
 void	free_coords(t_point3D **coords, int count);
+void	clean_exit(t_fdf *fdf, int exit_code);
 
 // rotation functions in rotate.c
 t_point3D	rotate_x(t_point3D point, double angle);
@@ -170,7 +172,7 @@ t_point2D	projection(t_fdf fdf, t_point3D point);
 // drawing functions in draw.c
 void	draw_main(t_map map, t_fdf *fdf);
 
-// hook functions in key_inputs.c
+// hook functions in loop_inputs.c
 void	key_inputs(void *tmp);
 
 // util functions for input in input_utils.c
@@ -181,6 +183,9 @@ void	anti_rotate(int key, t_fdf *fdf);
 
 // choose random color in random_color.c
 void	random_color(t_fdf *fdf);
+void	complete_random_color(t_fdf *fdf);
+
+// input for single key press in key_inputs.c
 void	static_keys(mlx_key_data_t keydata, void *tmp);
 
 // WARNING: ONLY TESTFUNCTIONS!!!! REMOVE LATER

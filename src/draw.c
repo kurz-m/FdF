@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 07:17:51 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/19 23:50:04 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/20 15:32:18 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static void	bresenham(t_fdf *fdf, t_point2D p1, t_point2D p2)
 	while (1)
 	{
 		draw_pixel(fdf, p1, fdf->project.color);
-		// draw_pixel(fdf, p1, C_WHITE);
 		if (p1.x == p2.x && p1.y == p2.y)
 			break ;
 		bresen.e2 = 2 * bresen.error;
@@ -75,8 +74,8 @@ void	draw_main(t_map map, t_fdf *fdf)
 		while (++x < map.width)
 		{
 			if (x < map.width - 1)
-			bresenham(fdf, projection(*fdf, map.coords[x][y]),
-				projection(*fdf, map.coords[x + 1][y]));
+				bresenham(fdf, projection(*fdf, map.coords[x][y]),
+					projection(*fdf, map.coords[x + 1][y]));
 			if (y < map.height - 1)
 				bresenham(fdf, projection(*fdf, map.coords[x][y]),
 					projection(*fdf, map.coords[x][y + 1]));

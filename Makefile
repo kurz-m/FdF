@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/20 11:11:42 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/20 16:36:37 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ UNAME := $(shell uname)
 ifeq ($(UNAME), Linux)
 	CC := gcc
 	DB := gdb
-	CFLAGS ?= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
+	CFLAGS ?= -Wextra -Wall -Wunreachable-code -O0 -g3
 else ifeq ($(UNAME), Darwin)
 	CC := cc
 	DB := lldb
@@ -29,6 +29,9 @@ else ifeq ($(UNAME), Darwin)
 else
 	$(error Unsupported operating system: $(UNAME))
 endif
+
+# Add leak sanitizer for checking memory
+# INC := -rdynamic -L./lib/LeakSanitizer -llsan -ldl -lstdc++
 
 # Add path for the source files
 VPATH := src/
@@ -46,13 +49,13 @@ HEADERS := -I./includes -I$(LIBMLX)/include/MLX42 -I$(LIBFT)/header
 # Specify the libraries to include
 LIBS :=	\
 			$(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm	\
-			$(LIBFT)/lib/libft.a
+			$(LIBFT)/lib/libft.a \
 
 # Name all source files
 SRCS := \
 			exits.c fdf.c init.c parse_map.c draw.c to_delete.c	\
-			project.c rotate.c key_inputs.c input_utils.c		\
-			random_color.c
+			project.c rotate.c loop_inputs.c input_utils.c		\
+			random_color.c key_inputs.c
 
 
 # Define a directory for object files
