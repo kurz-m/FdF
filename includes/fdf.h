@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/20 21:33:48 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/21 02:08:57 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ enum e_project
 {
 	ISOMETRIC,
 	OBLIQUE,
+	SPHERICAL,
 };
 
 // define enum for error handling
@@ -192,7 +193,8 @@ void	complete_random_color(t_fdf *fdf);
 void	static_keys(mlx_key_data_t keydata, void *tmp);
 
 // polar
-void	to_polar(t_map *map, int x, int y);
+t_point2D	mercator(t_point3D point, t_projection project, t_map map);
+void		to_polar(t_map *map, int x, int y);
 t_point3D	spherize(t_map map, t_point3D point);
 
 // WARNING: ONLY TESTFUNCTIONS!!!! REMOVE LATER
