@@ -6,31 +6,11 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:53:18 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/20 22:15:16 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/21 02:11:45 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-// static t_point2D	hammer(t_point3D point, t_fdf *fdf)
-// {
-// 	t_point2D	draw;
-// 	double		distance;
-// 
-// 	if (point.x == 0 && point.y = 0 && point.z == 0)
-// 	{
-// 		draw.x = 0;
-// 		draw.y = 0;
-// 	}
-// 
-//     // Project the point onto the 2D plane
-//     draw.x = distance * cos(azimuth);
-//     draw.y = distance * sin(azimuth);
-// 	draw.x += WIDTH / 2 + fdf->project.x_offset;
-// 	draw.y += HEIGHT / 2 + fdf->project.y_offset;
-// 	draw.z = (int) point.z;
-// 	return (draw);
-// }
 
 static t_point2D	orthographic(t_point3D point, t_projection project)
 {
@@ -82,10 +62,14 @@ t_point2D	projection(t_fdf fdf, t_point3D point)
 	point = rotate_y(point, fdf.project.alpha);
 	point = rotate_x(point, fdf.project.beta);
 	point = rotate_z(point, fdf.project.gamma);
-	// r_point = stereographic(point, fdf.project);
 	if (fdf.project.type == ISOMETRIC)
 		r_point = isometric(point, fdf.project);
 	else if (fdf.project.type == OBLIQUE)
+		r_point = oblique(point, fdf.project);
+	else if (fdf.project.type == SPHERICAL)
+	{
+		point.z /= 5;
 		r_point = orthographic(spherize(fdf.map, point), fdf.project);
+	}
 	return (r_point);
 }
