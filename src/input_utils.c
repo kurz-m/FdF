@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:33:28 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/20 20:04:16 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/21 16:38:36 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void	rotate(int key, t_fdf *fdf)
 void	anti_rotate(int key, t_fdf *fdf)
 {
 	if (key == MLX_KEY_A)
-		fdf->project.alpha -= 1;
+		fdf->project.alpha -= 0.5;
 	if (key == MLX_KEY_S)
-		fdf->project.beta -= 1;
+		fdf->project.beta -= 0.5;
 	if (key == MLX_KEY_D)
-		fdf->project.gamma -= 1;
+		fdf->project.gamma -= 0.5;
 	draw_main(fdf->map, fdf);
 }

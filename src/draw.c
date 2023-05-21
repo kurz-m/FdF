@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 07:17:51 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/21 02:22:20 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/21 16:52:32 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	draw_pixel(t_fdf *fdf, t_point2D point, uint32_t color)
 {
-	if (point.x < WIDTH && point.x > 0 && point.y < HEIGHT && point.y > 0)
+	if (point.x < WIDTH && point.x > 300 && point.y < HEIGHT && point.y > 0)
 		mlx_put_pixel(fdf->image, point.x, point.y, color);
 }
 

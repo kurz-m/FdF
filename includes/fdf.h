@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/21 02:08:57 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/21 16:34:32 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,7 @@
 // Define width and height of the window
 # define WIDTH 1920
 # define HEIGHT 1080
-
-// define angles for different projections
-# define ISO_PROJECTION 30.0
-
-// define rotation angles for different views
-# define ISO_ALPHA 45.0
-# define ISO_BETA 35.264
+# define LINE_HEIGHT 30
 
 /*****************************************************************************/
 /*****************************************************************************/
@@ -56,7 +50,7 @@
 # define C_BEIGE 0xFFEEB3FF
 # define C_FOREST 0x41644AFF
 # define C_YELLOW 0xFFEA20FF
-//
+
 // define enum for projection type
 enum e_project
 {
@@ -76,7 +70,6 @@ enum e_errors
 	MAP_ERROR,
 	COORDS_ERROR,
 	SIZE_ERROR,
-	MALLOC_ERROR,
 };
 
 typedef struct s_bresenham
@@ -87,7 +80,6 @@ typedef struct s_bresenham
 	int		sy;
 	int		error;
 	int		e2;
-	int		pixels;
 }	t_bresenham;
 
 // define a struct for the coordinates of a single point 3D
@@ -196,6 +188,9 @@ void	static_keys(mlx_key_data_t keydata, void *tmp);
 t_point2D	mercator(t_point3D point, t_projection project, t_map map);
 void		to_polar(t_map *map, int x, int y);
 t_point3D	spherize(t_map map, t_point3D point);
+
+// menu drawing
+void	draw_menu_main(t_fdf *fdf);
 
 // WARNING: ONLY TESTFUNCTIONS!!!! REMOVE LATER
 void	print_test(t_fdf * fdf);

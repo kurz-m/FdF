@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:14:59 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/20 23:55:04 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/21 16:53:01 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ static void	get_points(t_fdf *fdf)
 		ft_arrfree(columns);
 		columns = NULL;
 	}
-	// ft_arrfree(columns);
 }
 
 // Parse the map that is loaded
