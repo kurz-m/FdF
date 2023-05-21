@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:53:18 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/21 02:11:45 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/21 16:38:57 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_point2D	isometric(t_point3D point, t_projection project)
 	return (draw);
 }
 
-static t_point2D	oblique(t_point3D point, t_projection project)
+static t_point2D	oblique(t_point3D point, t_fdf fdf)
 {
 	t_point2D	draw;
 	float		lambda;
@@ -46,8 +46,8 @@ static t_point2D	oblique(t_point3D point, t_projection project)
 	lambda = 1.0 * cos(M_PI_4);
 	draw.x = point.x + lambda * point.z;
 	draw.y = point.y + lambda * point.z;
-	draw.x += WIDTH / 2 + project.x_offset;
-	draw.y += HEIGHT / 2 + project.y_offset;
+	draw.x += WIDTH / 2 - fdf.map.width / 2 + fdf.project.x_offset;
+	draw.y += HEIGHT / 2 + fdf.map.height / 2 + fdf.project.y_offset;
 	draw.z = (int) point.z;
 	return (draw);
 }
@@ -59,17 +59,14 @@ t_point2D	projection(t_fdf fdf, t_point3D point)
 	point.x *= fdf.project.zoom;
 	point.y *= fdf.project.zoom;
 	point.z *= fdf.project.zoom;
-	point = rotate_y(point, fdf.project.alpha);
-	point = rotate_x(point, fdf.project.beta);
+	point = rotate_x(point, fdf.project.alpha);
+	point = rotate_y(point, fdf.project.beta);
 	point = rotate_z(point, fdf.project.gamma);
 	if (fdf.project.type == ISOMETRIC)
 		r_point = isometric(point, fdf.project);
 	else if (fdf.project.type == OBLIQUE)
-		r_point = oblique(point, fdf.project);
+		r_point = oblique(point, fdf);
 	else if (fdf.project.type == SPHERICAL)
-	{
-		point.z /= 5;
 		r_point = orthographic(spherize(fdf.map, point), fdf.project);
-	}
 	return (r_point);
 }

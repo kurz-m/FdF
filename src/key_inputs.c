@@ -6,34 +6,37 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:42:13 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/21 02:13:05 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/21 16:40:05 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static void	reset_position(t_fdf *fdf, double alpha, double beta, double gamma)
+{
+		fdf->project.alpha = alpha;
+		fdf->project.beta = beta;
+		fdf->project.gamma = gamma;
+		fdf->project.x_offset = 0;
+		fdf->project.y_offset = 0;
+}
 
 void	change_projection(t_fdf *fdf, int key)
 {
 	if (key == MLX_KEY_J)
 	{
 		fdf->project.type = SPHERICAL;
-		fdf->project.alpha = 0;
-		fdf->project.beta = 45;
-		fdf->project.gamma = 0;
+		reset_position(fdf, 45.0, 0.0, 0);
 	}
 	if (key == MLX_KEY_K)
 	{
 		fdf->project.type = ISOMETRIC;
-		fdf->project.alpha = 0;
-		fdf->project.beta = 0;
-		fdf->project.gamma = 0;
+		reset_position(fdf, 0.0, 0.0, 0);
 	}
 	if (key == MLX_KEY_L)
 	{
 		fdf->project.type = OBLIQUE;
-		fdf->project.alpha = 0;
-		fdf->project.beta = -45;
-		fdf->project.gamma = 0;
+		reset_position(fdf, -45.0, 0.0, 0);
 	}
 	draw_main(fdf->map, fdf);
 }

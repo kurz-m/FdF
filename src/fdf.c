@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:00:55 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/20 15:47:09 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/21 16:36:27 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int32_t	main(int argc, char **argv)
 		error_handling(USAGE);
 	file_name = argv[1];
 	fdf = init_fdf(file_name);
+	draw_menu_main(fdf);
 	draw_main(fdf->map, fdf);
 	if (mlx_image_to_window(fdf->mlx, fdf->image, 0, 0) < 0)
 		clean_exit(fdf, IMG_INIT_ERROR);

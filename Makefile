@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/20 23:55:30 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/21 16:58:31 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,17 +21,14 @@ UNAME := $(shell uname)
 ifeq ($(UNAME), Linux)
 	CC := gcc
 	DB := gdb
-	CFLAGS ?= -Wextra -Wall -Wunreachable-code -O0 -g3
+	CFLAGS ?= -Wextra -Wall -Wunreachable-code -Ofast
 else ifeq ($(UNAME), Darwin)
 	CC := cc
 	DB := lldb
-	CFLAGS ?= -Wextra -Wall -Werror -Wunreachable-code -Ofast -g
+	CFLAGS ?= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 else
 	$(error Unsupported operating system: $(UNAME))
 endif
-
-# Add leak sanitizer for checking memory
-# INC := -rdynamic -L./lib/LeakSanitizer -llsan -ldl -lstdc++
 
 # Add path for the source files
 VPATH := src/
@@ -53,9 +50,9 @@ LIBS :=	\
 
 # Name all source files
 SRCS := \
-			exits.c fdf.c init.c parse_map.c draw.c to_delete.c	\
-			project.c rotate.c loop_inputs.c input_utils.c		\
-			random_color.c key_inputs.c testing.c
+			exits.c fdf.c init.c parse_map.c draw.c	menu.c	\
+			project.c rotate.c loop_inputs.c input_utils.c	\
+			random_color.c key_inputs.c spherize.c
 
 
 # Define a directory for object files
