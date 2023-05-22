@@ -44,6 +44,9 @@ and then the _client_ can be used to send a message to the server. This can be d
 where PID is the process number that the server printed out on startup. After sending the message from the client, 
 the server sends back an acknowledgment signal and the client prints out the acknowledged bytes.
 
+## Examples
+![./example_0.png]
+
 ```bash
 git clone --recurse-submodules https://github.com/kurz-m/FdF.git
 ```
