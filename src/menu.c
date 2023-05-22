@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 14:10:12 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/22 11:32:22 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/22 12:57:05 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ static void	draw_rotate_menu(t_fdf *fdf, int *line)
 	mlx_put_string(fdf->mlx, "##### COLOR #####", 30, *line);
 	*line += LINE_HEIGHT;
 	mlx_put_string(fdf->mlx, "R: Create random color", 30, *line);
+	*line += 2 * LINE_HEIGHT;
+	mlx_put_string(fdf->mlx, "##### RESET #####", 30, *line);
+	*line += LINE_HEIGHT;
+	mlx_put_string(fdf->mlx, "P: Reset position", 30, *line);
 }
 
 void	draw_menu_main(t_fdf *fdf)
