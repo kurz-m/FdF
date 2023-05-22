@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:53:18 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/22 11:31:21 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/22 14:11:36 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static t_point2D	oblique(t_point3D point, t_projection project)
 	return (draw);
 }
 
-void	init_point2D(t_point2D *r_point)
+void	init_point2d(t_point2D *r_point)
 {
 	r_point->x = 0;
 	r_point->y = 0;
@@ -64,7 +64,7 @@ t_point2D	projection(t_fdf fdf, t_point3D point)
 {
 	t_point2D	r_point;
 
-	init_point2D(&r_point);
+	init_point2d(&r_point);
 	point.x *= fdf.project.zoom;
 	point.y *= fdf.project.zoom;
 	point.z *= fdf.project.zoom;

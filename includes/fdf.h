@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 14:24:38 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/21 17:02:56 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/22 14:10:55 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ typedef struct s_point2D
 	int		z;
 }	t_point2D;
 
-
 // define a struct for all points of a map
 typedef struct s_map
 {
@@ -145,17 +144,17 @@ typedef struct s_fdf
 
 // Initialize functions
 // Function to initialize the main struct of fdf
-t_fdf	*init_fdf(char *file_name);
-void	init_map(t_map *map);
+t_fdf		*init_fdf(char *file_name);
+void		init_map(t_map *map);
 
 // Utils for the fdf program
-void	parse_map(char *file_name, t_fdf *fdf);
+void		parse_map(char *file_name, t_fdf *fdf);
 
 // error handling
 // Function for different error handling codes
-void	error_handling(int exit_code);
-void	free_coords(t_point3D **coords, int count);
-void	clean_exit(t_fdf *fdf, int exit_code);
+void		error_handling(int exit_code);
+void		free_coords(t_point3D **coords, int count);
+void		clean_exit(t_fdf *fdf, int exit_code);
 
 // rotation functions in rotate.c
 t_point3D	rotate_x(t_point3D point, double angle);
@@ -166,23 +165,23 @@ t_point3D	rotate_z(t_point3D point, double angle);
 t_point2D	projection(t_fdf fdf, t_point3D point);
 
 // drawing functions in draw.c
-void	draw_main(t_map map, t_fdf *fdf);
+void		draw_main(t_map map, t_fdf *fdf);
 
 // hook functions in loop_inputs.c
-void	key_inputs(void *tmp);
+void		key_inputs(void *tmp);
 
 // util functions for input in input_utils.c
-void	move(int key, t_fdf *fdf);
-void	zoom(int key, t_fdf *fdf);
-void	rotate(int key, t_fdf *fdf);
-void	anti_rotate(int key, t_fdf *fdf);
+void		move(int key, t_fdf *fdf);
+void		zoom(int key, t_fdf *fdf);
+void		rotate(int key, t_fdf *fdf);
+void		anti_rotate(int key, t_fdf *fdf);
 
 // choose random color in random_color.c
-void	random_color(t_fdf *fdf);
-void	complete_random_color(t_fdf *fdf);
+void		random_color(t_fdf *fdf);
+void		complete_random_color(t_fdf *fdf);
 
 // input for single key press in key_inputs.c
-void	static_keys(mlx_key_data_t keydata, void *tmp);
+void		static_keys(mlx_key_data_t keydata, void *tmp);
 
 // polar
 t_point2D	mercator(t_point3D point, t_projection project, t_map map);
@@ -190,9 +189,6 @@ void		to_polar(t_map *map, int x, int y);
 t_point3D	spherize(t_map map, t_point3D point);
 
 // menu drawing
-void	draw_menu_main(t_fdf *fdf);
-
-// WARNING: ONLY TESTFUNCTIONS!!!! REMOVE LATER
-void	print_test(t_fdf * fdf);
+void		draw_menu_main(t_fdf *fdf);
 
 #endif
