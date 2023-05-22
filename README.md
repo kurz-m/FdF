@@ -46,6 +46,7 @@ the server sends back an acknowledgment signal and the client prints out the ack
 
 ## Examples
 ![Basic example](./example_0.png)
+![Sphere example](./example_1.png)
 
 ```bash
 git clone --recurse-submodules https://github.com/kurz-m/FdF.git
