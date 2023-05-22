@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:00:55 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/22 10:46:01 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/22 18:11:20 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 // 	system(command);
 // }
 
+// add atexit(cleanup) for leak checking
 int32_t	main(int argc, char **argv)
 {
 	t_fdf	*fdf;
 	char	*file_name;
 
-// 	atexit(cleanup);
 	srand(time(NULL));
 	if (argc != 2 || ft_strstr(argv[1], ".fdf") == NULL)
 		error_handling(USAGE);

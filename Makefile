@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/22 10:33:01 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/22 18:09:46 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,9 @@ else ifeq ($(UNAME), Darwin)
 else
 	$(error Unsupported operating system: $(UNAME))
 endif
+
+# Flags for dependencies and phony target creation
+CFLAGS += -MMD -MP
 
 # Add path for the source files
 VPATH := src/
@@ -89,7 +92,7 @@ libmlx:
 $(OBJ_DIR)/%.o: %.c
 	@echo $(Y)Compiling [$@]...$(X)
 	@mkdir -p _obj
-	@$(CC) $(CFLAGS) -MMD -MP -c $< $(HEADERS) -o $@
+	@$(CC) $(CFLAGS) -c $< $(HEADERS) -o $@
 
 # Define a rule for cleaning the object files
 clean:
@@ -117,3 +120,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all, clean, fclean, re, libmlx
+
+-include $(OBJS:.o=.d)
