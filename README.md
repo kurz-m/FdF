@@ -31,9 +31,14 @@
 ---
 
 ## 💾 About
-> The task of the minitalk project is to code 2 C programs that communicate with each other via only 2 Signals (SIGUSR1 & SIGUSR2).
+> The task of the FdF (fil det fer) project is to code my first graphics program using the [MLX42](https://github.com/codam-coding-college/MLX42) library.
+
+## Requirements
+* MLX42 library
 
 ## Usage
+FdF is being used by ./FDF [map.fdf] where the map is located in the [maps](./maps/) folder and has to end with a _.fdf_.
+
 Minitalk has 2 programs that communicate with each other. The _server_ has to be started first in a separate terminal using `./server`
 and then the _client_ can be used to send a message to the server. This can be done using the syntax: `./client PID "message"`
 where PID is the process number that the server printed out on startup. After sending the message from the client, 
