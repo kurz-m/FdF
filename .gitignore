@@ -55,7 +55,6 @@ dkms.conf
 MLX42/
 Game
 *.log
-Libft/
 .ccls-cache
 fdf
 FdF
