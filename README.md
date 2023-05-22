@@ -45,7 +45,7 @@ where PID is the process number that the server printed out on startup. After se
 the server sends back an acknowledgment signal and the client prints out the acknowledged bytes.
 
 ## Examples
-![./example_0.png]
+![Basic example](./example_0.png)
 
 ```bash
 git clone --recurse-submodules https://github.com/kurz-m/FdF.git
