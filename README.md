@@ -45,18 +45,15 @@ where PID is the process number that the server printed out on startup. After se
 the server sends back an acknowledgment signal and the client prints out the acknowledged bytes.
 
 ```bash
-git clone https://github.com/kurz-m/minitalk.git
+git clone --recurse-submodules https://github.com/kurz-m/FdF.git
 ```
 
 ```bash
-cd minitalk
+cd FdF
 ```
 ```bash
 make
 ```
 ```bash
-./server
-```
-```bash
-./client <PID> "message"
+./FdF [map.fdf]
 ```
