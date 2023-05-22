@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 14:10:12 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/21 16:51:38 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/22 11:32:22 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static void	draw_movement_menu(t_fdf *fdf, int *line)
 {
 	mlx_put_string(fdf->mlx, "##### MOVEMENT #####", 30, *line);
 	*line += LINE_HEIGHT;
-	mlx_put_string(fdf->mlx, "UP: Move view up", 30, *line);
+	mlx_put_string(fdf->mlx, "UP: Move object up", 30, *line);
 	*line += LINE_HEIGHT;
-	mlx_put_string(fdf->mlx, "DOWN: Move view down", 30, *line);
+	mlx_put_string(fdf->mlx, "DOWN: Move object down", 30, *line);
 	*line += LINE_HEIGHT;
-	mlx_put_string(fdf->mlx, "RIGHT: Move view right", 30, *line);
+	mlx_put_string(fdf->mlx, "RIGHT: Move object right", 30, *line);
 	*line += LINE_HEIGHT;
-	mlx_put_string(fdf->mlx, "LEFT: Move view left", 30, *line);
+	mlx_put_string(fdf->mlx, "LEFT: Move object left", 30, *line);
 	*line += 2 * LINE_HEIGHT;
 	mlx_put_string(fdf->mlx, "##### ZOOM #####", 30, *line);
 	*line += LINE_HEIGHT;
@@ -46,11 +46,11 @@ static void	draw_rotate_menu(t_fdf *fdf, int *line)
 	*line += 2 * LINE_HEIGHT;
 	mlx_put_string(fdf->mlx, "##### PROJECTION #####", 30, *line);
 	*line += LINE_HEIGHT;
-	mlx_put_string(fdf->mlx, "J: Spherize", 30, *line);
-	*line += LINE_HEIGHT;
 	mlx_put_string(fdf->mlx, "K: Isometric", 30, *line);
 	*line += LINE_HEIGHT;
 	mlx_put_string(fdf->mlx, "L: Oblique", 30, *line);
+	*line += LINE_HEIGHT;
+	mlx_put_string(fdf->mlx, "J: Spherize (experimental)", 30, *line);
 	*line += 2 * LINE_HEIGHT;
 	mlx_put_string(fdf->mlx, "##### COLOR #####", 30, *line);
 	*line += LINE_HEIGHT;

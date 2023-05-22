@@ -6,7 +6,7 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 14:42:13 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/21 16:40:05 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/22 11:13:32 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	change_projection(t_fdf *fdf, int key)
 	if (key == MLX_KEY_L)
 	{
 		fdf->project.type = OBLIQUE;
-		reset_position(fdf, -45.0, 0.0, 0);
+		reset_position(fdf, 0.0, 0.0, 0);
 	}
 	draw_main(fdf->map, fdf);
 }

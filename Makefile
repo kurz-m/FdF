@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/21 16:58:31 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/22 10:33:01 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ UNAME := $(shell uname)
 ifeq ($(UNAME), Linux)
 	CC := gcc
 	DB := gdb
-	CFLAGS ?= -Wextra -Wall -Wunreachable-code -Ofast
+	CFLAGS ?= -Wextra -Wall -Werror -Wunreachable-code -Ofast
 else ifeq ($(UNAME), Darwin)
 	CC := cc
 	DB := lldb
@@ -53,7 +53,6 @@ SRCS := \
 			exits.c fdf.c init.c parse_map.c draw.c	menu.c	\
 			project.c rotate.c loop_inputs.c input_utils.c	\
 			random_color.c key_inputs.c spherize.c
-
 
 # Define a directory for object files
 OBJ_DIR := ./_obj
