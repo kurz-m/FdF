@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 13:33:28 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/21 16:38:36 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/22 10:41:07 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	move(int key, t_fdf *fdf)
 {
 	if (key == MLX_KEY_UP)
-		fdf->project.y_offset += 10;
-	if (key == MLX_KEY_DOWN)
 		fdf->project.y_offset -= 10;
+	if (key == MLX_KEY_DOWN)
+		fdf->project.y_offset += 10;
 	if (key == MLX_KEY_LEFT)
-		fdf->project.x_offset += 10;
-	if (key == MLX_KEY_RIGHT)
 		fdf->project.x_offset -= 10;
+	if (key == MLX_KEY_RIGHT)
+		fdf->project.x_offset += 10;
 	draw_main(fdf->map, fdf);
 }
 

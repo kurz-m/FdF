@@ -6,20 +6,27 @@
 /*   By: makurz <dumba@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 13:00:55 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/21 16:36:27 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/22 10:46:01 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+// void cleanup() {
+// 	char command[100];
+// 	pid_t pid = getpid();
+// 	sprintf(command, "leaks %d", pid);
+// 	system(command);
+// }
 
 int32_t	main(int argc, char **argv)
 {
 	t_fdf	*fdf;
 	char	*file_name;
 
+// 	atexit(cleanup);
 	srand(time(NULL));
-	// FIX: check if file is named *.fdf!!!
-	if (argc != 2)
+	if (argc != 2 || ft_strstr(argv[1], ".fdf") == NULL)
 		error_handling(USAGE);
 	file_name = argv[1];
 	fdf = init_fdf(file_name);
@@ -30,6 +37,6 @@ int32_t	main(int argc, char **argv)
 	mlx_key_hook(fdf->mlx, &static_keys, fdf);
 	mlx_loop_hook(fdf->mlx, &key_inputs, fdf);
 	mlx_loop(fdf->mlx);
-	mlx_terminate(fdf->mlx);
+	clean_exit(fdf, SUCCESS);
 	return (EXIT_SUCCESS);
 }

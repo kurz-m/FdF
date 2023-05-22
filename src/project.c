@@ -6,12 +6,13 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:53:18 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/21 16:38:57 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/22 11:31:21 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+// Orthographic projection for project the sphere onto the 2D plane
 static t_point2D	orthographic(t_point3D point, t_projection project)
 {
 	t_point2D	draw;
@@ -38,24 +39,32 @@ static t_point2D	isometric(t_point3D point, t_projection project)
 	return (draw);
 }
 
-static t_point2D	oblique(t_point3D point, t_fdf fdf)
+static t_point2D	oblique(t_point3D point, t_projection project)
 {
 	t_point2D	draw;
 	float		lambda;
 
 	lambda = 1.0 * cos(M_PI_4);
-	draw.x = point.x + lambda * point.z;
-	draw.y = point.y + lambda * point.z;
-	draw.x += WIDTH / 2 - fdf.map.width / 2 + fdf.project.x_offset;
-	draw.y += HEIGHT / 2 + fdf.map.height / 2 + fdf.project.y_offset;
+	draw.x = point.x - 0.5 * lambda * point.z;
+	draw.y = point.y - 0.5 * lambda * point.z;
+	draw.x += WIDTH / 2 + project.x_offset;
+	draw.y += HEIGHT / 2 + project.y_offset;
 	draw.z = (int) point.z;
 	return (draw);
+}
+
+void	init_point2D(t_point2D *r_point)
+{
+	r_point->x = 0;
+	r_point->y = 0;
+	r_point->z = 0;
 }
 
 t_point2D	projection(t_fdf fdf, t_point3D point)
 {
 	t_point2D	r_point;
 
+	init_point2D(&r_point);
 	point.x *= fdf.project.zoom;
 	point.y *= fdf.project.zoom;
 	point.z *= fdf.project.zoom;
@@ -65,7 +74,7 @@ t_point2D	projection(t_fdf fdf, t_point3D point)
 	if (fdf.project.type == ISOMETRIC)
 		r_point = isometric(point, fdf.project);
 	else if (fdf.project.type == OBLIQUE)
-		r_point = oblique(point, fdf);
+		r_point = oblique(point, fdf.project);
 	else if (fdf.project.type == SPHERICAL)
 		r_point = orthographic(spherize(fdf.map, point), fdf.project);
 	return (r_point);
