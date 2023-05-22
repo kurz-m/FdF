@@ -33,20 +33,21 @@
 ## 💾 About
 > The task of the FdF (fil det fer) project is to code my first graphics program using the [MLX42](https://github.com/codam-coding-college/MLX42) library.
 
+![Basic example](./example_0.png)
+![Sphere example](./example_1.png)
+
 ## Requirements
-* MLX42 library
+* [MLX42](https://github.com/codam-coding-college/MLX42)
+* [Libft](https://github.com/kurz-m/Libft)
+* [CMake](https://cmake.org/)
+* [glfw](https://github.com/glfw/glfw)
 
 ## Usage
 FdF is being used by ./FDF [map.fdf] where the map is located in the [maps](./maps/) folder and has to end with a _.fdf_.
+As long as all requirements are installed, a basic `make` in the root directory of [FdF](./) is sufficient. Large maps need
+longer to load.
 
-Minitalk has 2 programs that communicate with each other. The _server_ has to be started first in a separate terminal using `./server`
-and then the _client_ can be used to send a message to the server. This can be done using the syntax: `./client PID "message"`
-where PID is the process number that the server printed out on startup. After sending the message from the client, 
-the server sends back an acknowledgment signal and the client prints out the acknowledged bytes.
-
-## Examples
-![Basic example](./example_0.png)
-![Sphere example](./example_1.png)
+Regarding the different projections, _spherize_ is still in an experimental stage and produces interesting art when rotated.
 
 ```bash
 git clone --recurse-submodules https://github.com/kurz-m/FdF.git
