@@ -6,7 +6,7 @@
 /*   By: makurz <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:53:18 by makurz            #+#    #+#             */
-/*   Updated: 2023/05/22 14:11:36 by makurz           ###   ########.fr       */
+/*   Updated: 2023/05/24 00:33:18 by makurz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,30 @@
 static t_point2D	orthographic(t_point3D point, t_projection project)
 {
 	t_point2D	draw;
+	double		mu;
+	int			radius;
 
-	draw.x = point.x;
-	draw.y = point.y;
+	radius = 800;
+	mu = 2 * radius / (radius - point.z);
+	draw.x = point.x * mu;
+	draw.y = point.y * mu;
 	draw.x += WIDTH / 2 + project.x_offset;
 	draw.y += HEIGHT / 2 + project.y_offset;
 	draw.z = (int) point.z;
 	return (draw);
 }
 
+// static t_point2D	orthographic(t_point3D point, t_projection project)
+// {
+// 	t_point2D	draw;
+// 
+// 	draw.x = point.x;
+// 	draw.y = point.y;
+// 	draw.x += WIDTH / 2 + project.x_offset;
+// 	draw.y += HEIGHT / 2 + project.y_offset;
+// 	draw.z = (int) point.z;
+// 	return (draw);
+// }
 // function to project the 3D points into 2D 
 // and keeping the perspective of the isometric view
 static t_point2D	isometric(t_point3D point, t_projection project)
