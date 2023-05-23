@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/22 18:09:46 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/23 14:41:43 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,11 @@ $(LIBFT_NAME):
 
 # Define a rule to compile the MLX42
 libmlx:
-	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
+	@if [ ! -d "./lib/MLX42" ]; then \
+		git clone https://github.com/codam-coding-college/MLX42.git ./lib/MLX42; \
+	fi
+	@cd ./lib/MLX42 && cmake -B build && cmake --build build -j4
+	# @cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
 # Define a static rule for compiling the object files
 $(OBJ_DIR)/%.o: %.c
@@ -121,4 +125,5 @@ re: fclean all
 
 .PHONY: all, clean, fclean, re, libmlx
 
+# include dependencies for the header file
 -include $(OBJS:.o=.d)
