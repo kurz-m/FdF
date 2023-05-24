@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/23 14:41:43 by makurz           ###   ########.fr        #
+#    Updated: 2023/05/24 13:23:06 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ else ifeq ($(UNAME), Darwin)
 	CC := cc
 	DB := lldb
 	CFLAGS ?= -Wextra -Wall -Werror -Wunreachable-code -Ofast
+	LIB_PATH := -L "$(shell brew --prefix glfw)"
 else
 	$(error Unsupported operating system: $(UNAME))
 endif
