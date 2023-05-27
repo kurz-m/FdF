@@ -31,7 +31,7 @@
 ---
 
 ## 💾 About
-> The task of the FdF (fil det fer) project is to code my first graphics program using the [MLX42](https://github.com/codam-coding-college/MLX42) library.
+> The task of the FdF (fil de fer) project is to code my first graphics program using the [MLX42](https://github.com/codam-coding-college/MLX42) library.
 
 ![Basic example](./example_0.png)
 ![Sphere example](./example_1.png)
