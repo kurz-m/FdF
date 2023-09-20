@@ -6,7 +6,7 @@
 #    By: makurz <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/25 09:04:17 by makurz            #+#    #+#              #
-#    Updated: 2023/05/24 13:23:06 by makurz           ###   ########.fr        #
+#    Updated: 2023/09/21 00:34:22 by makurz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,9 +87,6 @@ $(LIBFT_NAME):
 
 # Define a rule to compile the MLX42
 libmlx:
-	@if [ ! -d "./lib/MLX42" ]; then \
-		git clone https://github.com/codam-coding-college/MLX42.git ./lib/MLX42; \
-	fi
 	@cd ./lib/MLX42 && cmake -B build && cmake --build build -j4
 	# @cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 
