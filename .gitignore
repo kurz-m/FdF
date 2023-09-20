@@ -52,10 +52,10 @@ Mkfile.old
 dkms.conf
 
 # Personal ignores
-MLX42/
 Game
 *.log
 .ccls-cache
 fdf
 FdF
 LeakSanitizer/
+bak/
